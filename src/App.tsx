@@ -1,4 +1,4 @@
-import Layout from './containers/Layout'
+import Layout from './containers/GeneralOverview/Layout/Layout'
 import GeneralOverview from './containers/GeneralOverview/GeneralOverview'
 // import AssetsOverview from './components/AssetsOverview/AssetsOverview'
 import AssetsList from './components/AssetsList/AssetsList'
@@ -9,6 +9,11 @@ import UsersLIst from './components/UsersList/UsersList'
 import User from './components/User/User'
 import UnitsList from './components/UnitsList/UnitsList'
 import Unity from './components/Unity/Unity'
+
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+
+library.add(fas)
 
 
 function App() {

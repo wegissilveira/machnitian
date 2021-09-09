@@ -15,7 +15,7 @@ const UnitsOverview: React.FC<{units: IUnitsData[]}> = props => {
     }, [props.units])
 
     return (
-        <Link to={`${process.env.PUBLIC_URL}/users-list`}>
+        <Link to={`${process.env.PUBLIC_URL}/units-list`}>
             <div style={{backgroundColor: '#CCC', cursor: 'pointer'}}>
                 <p>Total: {totalUnits}</p>
             </div>

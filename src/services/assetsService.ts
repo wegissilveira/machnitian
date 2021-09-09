@@ -1,6 +1,4 @@
-// import http from '../http-common'
 import { http, httpAll } from '../http-common'
-// import IAssetsData from '../models/Assets'
 
 const getAll = () => {
     return httpAll

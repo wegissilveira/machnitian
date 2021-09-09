@@ -16,6 +16,6 @@ export default interface IAssetsData {
     sensors: string[],
     companyId: number,
     unitId: number,
-    healthScore: number,
+    healthscore: number,
     status: string
 }

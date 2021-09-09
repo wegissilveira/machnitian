@@ -1,22 +1,20 @@
 import React from 'react'
 
-// import classes from './AssetsOverview.module.css'
+import classes from './AssetsOverview.module.css'
 
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
+import Highcharts from 'highcharts';
+import HighchartsReact from 'highcharts-react-official';
 
 // import AssetsService from '../../services/assetsService'
-import IAssetsData from '../../models/AssetsModel'
+import IAssetsData from 'models/AssetsModel'
+import TAssetsReport from 'models/AssetsReportModel'
 
+import AssetsReport from './AssetsReport/AssetsReport';
 
-type TAssetsOverview = {
-    totalAssets: number,
-    assetsInOperation: number,
-    assetsInAlert: number,
-    assetsInDowntime: number
-}
 
 const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
-    let [overview, setOverview] = React.useState<TAssetsOverview>({
+    let [overview, setOverview] = React.useState<TAssetsReport>({
         totalAssets: 0, 
         assetsInOperation: 0, 
         assetsInAlert: 0, 
@@ -48,17 +46,59 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
         
     }, [overview, props.assets, initialMount])
 
+    const options = {
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+          },
+          title: {
+            text: `Total: ${overview.totalAssets}`,
+            y:200
+          },
+        legend:{
+          enabled:true
+        },
+        plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            showInLegend: true,
+            dataLabels: {
+            enabled: false
+            }
+        }
+        },
+        series: [{
+        name: 'Assets',
+        colorByPoint: true,
+            innerSize: '70%',
+        data: [{
+            name: `Funcionando (${overview.assetsInOperation})`,
+            color: 'green',
+            y: overview.assetsInOperation,
+        }, {
+            name: `Em alerta (${overview.assetsInAlert})`,
+            color: 'orange',
+            y: overview.assetsInAlert
+        }, {
+            name: `Paradas (${overview.assetsInDowntime})`,
+            color: 'red',
+            y: overview.assetsInDowntime
+        }]
+        }]
+    }
+
 
     return (
-        <div>
-            <Link to={`${process.env.PUBLIC_URL}/assets-list`}>
-                <div style={{backgroundColor: '#ccc', cursor: 'pointer'}}>
-                    <p>Total: {overview.totalAssets}</p>
-                    <p>Funcionando: {overview.assetsInOperation}</p>
-                    <p>Em alerta: {overview.assetsInAlert}</p>
-                    <p>Paradas: {overview.assetsInDowntime}</p>
-                </div>
-            </Link>
+        <div className={classes['assetsOverview-container']}>
+            <h1>ATIVOS</h1>
+            {/* <Link to={`${process.env.PUBLIC_URL}/assets-list`}>
+                Lista completa dos ativos
+            </Link> */}
+            <AssetsReport assetsReport={overview}/>
+            <HighchartsReact highcharts={Highcharts} options={options} />
         </div>
     )
 }

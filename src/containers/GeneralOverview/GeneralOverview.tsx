@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 
-import AssetsService from '../../services/assetsService'
-import IAssetsData from '../../models/AssetsModel'
-import IUsersData from '../../models/UsersModel'
-import IUnitsData from '../../models/UnitsModel'
-import ICompanyData from '../../models/CompanyModel'
+import AssetsService from 'services/assetsService'
+import IAssetsData from 'models/AssetsModel'
+import IUsersData from 'models/UsersModel'
+import IUnitsData from 'models/UnitsModel'
+import ICompanyData from 'models/CompanyModel'
 
-import AssetsOverview from '../../components/AssetsOverview/AssetsOverview'
-import UsersOverview from '../../components/UsersOverview/UsersOverview'
-import UnitsOverview from '../../components/UnitsOverview/UnitsOverview'
-import CompanyOverview from '../../components/CompanyOverview/CompanyOverview'
+import AssetsOverview from 'components/AssetsOverview/AssetsOverview'
+import UsersOverview from 'components/UsersOverview/UsersOverview'
+import UnitsOverview from 'components/UnitsOverview/UnitsOverview'
+// import CompanyOverview from '../../components/CompanyOverview/CompanyOverview'
+import CompanyOverview from 'components/CompanyOverview/CompanyOverview'
 
 
 type Props = {}
@@ -50,7 +51,6 @@ class GeneralOverview extends Component<Props, State> {
     render() {
         return (
             <React.Fragment>
-                <h1>ASSETS OVERVIEW</h1>
                 <AssetsOverview assets={this.state.assets} />
                 <h1>USERS OVERVIEW</h1>
                 <UsersOverview users={this.state.users} />
