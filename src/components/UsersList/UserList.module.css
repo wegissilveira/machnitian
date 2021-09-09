@@ -1,8 +1,8 @@
-.AssetsList-container {
+.UserList-container {
     background-color: transparent; /*PROVISÓRIO PARA LINKAR O ARQUIVO */
 }
 
-table {
+.UserList-container table {
     border: 1px solid #ccc;
     border-collapse: collapse;
     width: 100%;
@@ -10,30 +10,29 @@ table {
     margin-top: 10px;
 }
 
-table caption {
+.UserList-container table caption {
     font-size: 1.5em;
     margin: .5em 0 .75em;
 }
   
-table tr {
+.UserList-container table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
 }
   
-table th,
-table td {
+.UserList-container table th,
+.UserList-container table td {
     padding: .625em;
     text-align: center;
 }
   
-table th {
+.UserList-container table th {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
 }
 
-td a {
-    display: block;
+.UserList-container td {
     padding-top: 10px;
     padding-bottom: 10px;
 
@@ -42,10 +41,6 @@ td a {
     text-overflow: ellipsis;
 }
 
-table td {
-    padding: 0;
-}
-
-td svg {
+.UserList-container td svg {
     font-size: 1.5em!important;
 }

@@ -1,21 +1,18 @@
 import React, { Component } from 'react'
 
-import { Link } from 'react-router-dom'
+import Navigation from 'components/Navigation/Navigation'
+import Footer from 'components/Footer/Footer'
 
-import Navigation from '../../../components/Navigation/Navigation'
 
 class Layout extends Component {
     render() {
         return (
             <React.Fragment>
                 <Navigation />
-                <Link to={`${process.env.PUBLIC_URL}/`}>
-                    <h1>TRACTIAN</h1>
-                </Link>
-                
                 <main>
                     { this.props.children }
                 </main>
+                <Footer />
             </React.Fragment>
         )
     }

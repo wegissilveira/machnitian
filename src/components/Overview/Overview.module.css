@@ -1,0 +1,22 @@
+.Overview-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2em;
+    width: 80%;
+    background-color: rgb(240, 238, 238);
+    padding: 3%;
+    margin-left: 7%;
+    margin-bottom: 10px;
+    box-shadow: -3px 4px 10px 1px #aaa;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.Overview-container span {
+    font-weight: bold;
+}

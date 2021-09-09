@@ -51,7 +51,8 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
-            type: 'pie'
+            type: 'pie',
+            backgroundColor: 'rgb(245, 245, 245)'
           },
           title: {
             text: `Total: ${overview.totalAssets}`,
@@ -62,31 +63,31 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
         },
         plotOptions: {
         pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            showInLegend: true,
-            dataLabels: {
-            enabled: false
+                allowPointSelect: true,
+                cursor: 'pointer',
+                showInLegend: true,
+                dataLabels: {
+                enabled: false
             }
         }
         },
         series: [{
-        name: 'Assets',
-        colorByPoint: true,
-            innerSize: '70%',
-        data: [{
-            name: `Funcionando (${overview.assetsInOperation})`,
-            color: 'green',
-            y: overview.assetsInOperation,
-        }, {
-            name: `Em alerta (${overview.assetsInAlert})`,
-            color: 'orange',
-            y: overview.assetsInAlert
-        }, {
-            name: `Paradas (${overview.assetsInDowntime})`,
-            color: 'red',
-            y: overview.assetsInDowntime
-        }]
+            name: 'Assets',
+            colorByPoint: true,
+                innerSize: '70%',
+            data: [{
+                name: `Funcionando (${overview.assetsInOperation})`,
+                color: 'green',
+                y: overview.assetsInOperation,
+            }, {
+                name: `Em alerta (${overview.assetsInAlert})`,
+                color: 'orange',
+                y: overview.assetsInAlert
+            }, {
+                name: `Paradas (${overview.assetsInDowntime})`,
+                color: 'red',
+                y: overview.assetsInDowntime
+            }]
         }]
     }
 
@@ -94,9 +95,6 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
     return (
         <div className={classes['assetsOverview-container']}>
             <h1>ATIVOS</h1>
-            {/* <Link to={`${process.env.PUBLIC_URL}/assets-list`}>
-                Lista completa dos ativos
-            </Link> */}
             <AssetsReport assetsReport={overview}/>
             <HighchartsReact highcharts={Highcharts} options={options} />
         </div>

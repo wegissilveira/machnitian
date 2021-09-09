@@ -1,0 +1,72 @@
+.UserModal-wrapper {
+    background-color: rgba(0, 0, 0, 0.466);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 9999;
+}
+
+.UserModal-container {
+    width: 90%;
+    height: 60vh;
+    margin-left: 4%;
+    padding: 1%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    box-shadow: -3px 4px 10px 1px #aaa;
+    border-radius: 5px;
+
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+}
+
+.UserModal-container > svg {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.UserModal-subContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    height: 80%;
+    margin-top: 10%;
+}
+
+.UserModal-subContainer--header {
+    display: flex;
+    align-items: center;
+}
+
+.UserModal-subContainer--header > svg {
+    margin-left: 10px;
+    font-size: 1.2em;
+}
+
+.UserModal-details {
+    padding: 20px;
+    padding-top: 0;
+    font-size: 1.2em;
+}
+
+.UserModal-details p {
+    margin-bottom: 10px;
+}
+
+.UserModal-details span {
+    font-weight: bold;
+}

@@ -3,5 +3,5 @@ export default interface IUsersData {
     email: string,
     name: string,
     unitId: number,
-    companyId: number
+    companyId: number,
 }

@@ -1,7 +1,6 @@
 import React from 'react'
 
 import classes from './AssetsList.module.css'
-// import './AssetsList.css'
 
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -18,14 +17,11 @@ const AssetsList: React.FC = () => {
             .then(response => setAssets(response.data))
     }, [])
 
-    // console.log(assets)
-
 
     return (
         <div className={classes['AssetsList-container']}>
             <h1>ASSETS LIST</h1>
             <table>
-                {/* <caption>Statement Summary</caption> */}
                 <thead>
                     <tr>
                         <th scope="col">Id</th>
@@ -38,7 +34,6 @@ const AssetsList: React.FC = () => {
                     {
                         assets.map((asset, index) => {
                             return <tr key={`${asset.name}-${index}`}>
-                                {/* <Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} > */}
                                     <td data-label="Id"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.id}</Link></td>
                                     <td data-label="Nome"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.name}</Link></td>
                                     <td data-label="Status"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >
@@ -46,7 +41,7 @@ const AssetsList: React.FC = () => {
                                             <FontAwesomeIcon 
                                                 icon={['fas', 'check-circle']} 
                                                 size="2x"
-                                                color="#00ce00" 
+                                                color="#2563eb" 
                                             />
                                         }
                                         {asset.status === 'inAlert' && 
@@ -65,7 +60,7 @@ const AssetsList: React.FC = () => {
                                         }
                                     </Link></td>
                                     <td data-label="Saúde"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.healthscore}</Link></td>
-                            </tr>
+                                </tr>
                         })
                     }
                 </tbody>

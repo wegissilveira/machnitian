@@ -7,32 +7,26 @@
     max-width: 100%;
 }
 
+.Asset-mainIcons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: -19%;
+    width: 90%;
+    margin-left: 5%;
+}
+
 .health-notation {
     color: green;
     width: fit-content;
-    margin-top: -17%;
-
-    transform: translate(20%);
-    -webkit-transform: translate(20%);
-    -moz-transform: translate(20%);
-    -ms-transform: translate(20%);
-    -o-transform: translate(20%);
-}
-
-.health-notation > svg {
-    transform: translate(-20%, -65%);
-    -webkit-transform: translate(-20%, -65%);
-    -moz-transform: translate(-20%, -65%);
-    -ms-transform: translate(-20%, -65%);
-    -o-transform: translate(-20%, -65%);
 }
 
 .health-notation--circle {
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: 90px;
+    height: 90px;
     border: 6px solid;
-    background-color: rgba(204, 204, 204, 0.651);
+    background-color: rgba(204, 204, 204, 0.74);
 
     border-radius: 50%;
     -webkit-border-radius: 50%;
@@ -46,11 +40,81 @@
     left: 50%;
     bottom: 50%;
     font-weight: bold;
-    font-size: 1.6em;
+    font-size: 1.5em;
 
     transform: translate(-50%, 50%);
     -webkit-transform: translate(-50%, 50%);
     -moz-transform: translate(-50%, 50%);
     -ms-transform: translate(-50%, 50%);
     -o-transform: translate(-50%, 50%);
+}
+
+.AssetHealthScore {
+    margin-top: -50%;
+
+    transform: translateX(-20%);
+    -webkit-transform: translateX(-20%);
+    -moz-transform: translateX(-20%);
+    -ms-transform: translateX(-20%);
+    -o-transform: translateX(-20%);
+}
+
+.status-notation {
+    transform: translateY(20%);
+    -webkit-transform: translateY(20%);
+    -moz-transform: translateY(20%);
+    -ms-transform: translateY(20%);
+    -o-transform: translateY(20%);
+}
+
+.AssetDetails-container h2, h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.AssetDetails-container span {
+    font-weight: bold;
+}
+
+.AssetDetails-container > div {
+    width: 90%;
+    margin-left: 4%;
+    padding: 1%;
+    background-color: #fff;
+    margin-bottom: 10px;
+    box-shadow: -3px 4px 10px 1px #aaa;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.AssetDetails-container > div div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.AssetDetails-container > div div svg {
+    width: 1.25em!important;
+}
+
+.AssetDetails-container > div div > p {
+    margin-left: 10px;
+}
+
+.Asset-uptime {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.Asset-uptime > svg {
+    font-size: 1.5em;
+}
+
+.Asset-uptime > p {
+    margin-left: 10px;
 }

@@ -1,0 +1,12 @@
+.Footer-container {
+    height: 50px;
+    background-color: #1e3c8f;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Footer-container a {
+    font-weight: bold;
+}

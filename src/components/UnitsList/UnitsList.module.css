@@ -1,8 +1,8 @@
-.AssetsList-container {
+.UnitsList-container {
     background-color: transparent; /*PROVISÓRIO PARA LINKAR O ARQUIVO */
 }
 
-table {
+.UnitsList-container table {
     border: 1px solid #ccc;
     border-collapse: collapse;
     width: 100%;
@@ -10,30 +10,37 @@ table {
     margin-top: 10px;
 }
 
-table caption {
+.UnitsList-container table caption {
     font-size: 1.5em;
     margin: .5em 0 .75em;
 }
   
-table tr {
+.UnitsList-container table tr {
     background-color: #f8f8f8;
     border: 1px solid #ddd;
 }
   
-table th,
-table td {
+.UnitsList-container table th,
+.UnitsList-container table td {
     padding: .625em;
     text-align: center;
 }
   
-table th {
+.UnitsList-container table th {
     font-size: .85em;
     letter-spacing: .1em;
     text-transform: uppercase;
 }
 
-td a {
-    display: block;
+.UnitsList-container table th:first-of-type {
+    width: 30%;
+}
+
+.UnitsList-container table th:last-of-type {
+    width: 70%;
+}
+
+.UnitsList-container td {
     padding-top: 10px;
     padding-bottom: 10px;
 
@@ -42,10 +49,6 @@ td a {
     text-overflow: ellipsis;
 }
 
-table td {
-    padding: 0;
-}
-
-td svg {
+.UnitsList-container td svg {
     font-size: 1.5em!important;
 }

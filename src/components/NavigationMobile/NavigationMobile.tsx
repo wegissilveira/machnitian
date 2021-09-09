@@ -25,6 +25,9 @@ const NavigationMobile: React.FC = () => {
 
     return (
         <div className={classes['NavigationMobile-container']}>
+            <Link to={`${process.env.PUBLIC_URL}/`}>
+                <img src={require("logo/logo.png").default} alt="TRACTIAN"/>
+            </Link>
             <FontAwesomeIcon 
                 icon="bars" size="2x" 
                 onClick={mobileMenuHandler}
@@ -34,7 +37,7 @@ const NavigationMobile: React.FC = () => {
                 className={classes['NavigationMobile-subContainer']}
                 onClick={mobileMenuHandler}
             >
-                <h1>TRACTIAN</h1>
+                <img src={require('../../logo/logo.png').default} alt="TRACTIAN"/>
                 <FontAwesomeIcon 
                     icon="times" size="2x" 
                 />
