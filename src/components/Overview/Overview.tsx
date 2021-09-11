@@ -15,16 +15,17 @@ const UsersOverview: React.FC<{
     title: string,
     link: string
 }> = props => {
-
+    
     let [header, setHeader] = React.useState<number | string | null>(0)
 
     React.useEffect(() => {
         if (props.title !== 'Empresa') {
             setHeader(props.values.length)
         } else {
-            props.values.forEach(value => {
-                setHeader(value.name)
-            })
+            let companyName: ''
+            const value: any[] = Object.values(props.values)
+            companyName = value[1]
+            setHeader(companyName)
         }
     }, [props.values, props.title])
 

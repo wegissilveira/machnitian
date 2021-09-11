@@ -1,3 +1,6 @@
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { Provider } from 'react-redux'
+
 import Layout from 'containers/Layout/Layout'
 import GeneralOverview from 'containers/GeneralOverview/GeneralOverview'
 import CompanyInfo from './components/CompanyInfo/CompanyInfo'
@@ -8,7 +11,7 @@ import UserModal from 'components/UserModal/UserModal'
 import UnitsList from 'components/UnitsList/UnitsList'
 import Unity from 'components/Unity/Unity'
 
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import store from 'store'
 
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
@@ -17,22 +20,24 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 library.add(fas, far)
 
 
-function App() {
+const  App = () =>  {
   return (
-    <BrowserRouter>
-      <Layout>
-        <Switch>
-          <Route path={`${process.env.PUBLIC_URL}/`} exact component={GeneralOverview} />
-          <Route path={`${process.env.PUBLIC_URL}/company`} exact component={CompanyInfo} />
-          <Route path={`${process.env.PUBLIC_URL}/assets-list`} exact component={AssetsList} />
-          <Route path={`${process.env.PUBLIC_URL}/asset/:id`} exact component={Asset} />
-          <Route path={`${process.env.PUBLIC_URL}/users-list/`} exact component={UsersLIst} />
-          <Route path={`${process.env.PUBLIC_URL}/user/:id`} exact component={UserModal} />
-          <Route path={`${process.env.PUBLIC_URL}/units-list/`} exact component={UnitsList} />
-          <Route path={`${process.env.PUBLIC_URL}/unity/:id`} exact component={Unity} />
-        </Switch>
-      </Layout>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Layout>
+          <Switch>
+            <Route path={`${process.env.PUBLIC_URL}/`} exact component={GeneralOverview} />
+            <Route path={`${process.env.PUBLIC_URL}/company`} exact component={CompanyInfo} />
+            <Route path={`${process.env.PUBLIC_URL}/assets-list`} exact component={AssetsList} />
+            <Route path={`${process.env.PUBLIC_URL}/asset/:id`} exact component={Asset} />
+            <Route path={`${process.env.PUBLIC_URL}/users-list/`} exact component={UsersLIst} />
+            <Route path={`${process.env.PUBLIC_URL}/user/:id`} exact component={UserModal} />
+            <Route path={`${process.env.PUBLIC_URL}/units-list/`} exact component={UnitsList} />
+            <Route path={`${process.env.PUBLIC_URL}/unity/:id`} exact component={Unity} />
+          </Switch>
+        </Layout>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

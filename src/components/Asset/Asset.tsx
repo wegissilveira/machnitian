@@ -24,10 +24,23 @@ const AssetComponent: React.FC<MyComponent> = props => {
     let [healthColor, setHealthColor] = React.useState<string>(colors[3])
 
 
+    const capitalize = (str: string | undefined) => {
+        let splitStr = str?.toLowerCase().split(' ');
+        if (splitStr) {
+            for (let i = 0; i < splitStr.length; i++) {
+                splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+            }
+            
+            return splitStr.join(' '); 
+        }
+        
+    }
+
     React.useEffect(() => {
         AssetsService.getAsset(props.match.params.id)
             .then(response => setActualAsset(response.data))
     }, [props.match.params.id])
+
 
     React.useEffect(() => {
         let currentStatus = []
@@ -136,7 +149,7 @@ const AssetComponent: React.FC<MyComponent> = props => {
                             icon={['fas', 'cog']} 
                             color={colors[0]}   
                         />
-                        <p><span>Modelo:</span> {currentAsset?.model}</p>
+                        <p><span>Modelo:</span> {capitalize(currentAsset?.model)}</p>
                     </div>
                     <div>
                         <FontAwesomeIcon 
@@ -150,7 +163,7 @@ const AssetComponent: React.FC<MyComponent> = props => {
                             icon={['fas', 'user-cog']} 
                             color={colors[0]}   
                         />
-                        <p><span>Responsável:</span> Zé</p>
+                        <p><span>Responsável:</span> {capitalize('testador um')}</p>
                     </div>
                     <div>
                         <FontAwesomeIcon 

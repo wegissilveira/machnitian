@@ -1,4 +1,4 @@
-import { http, httpAll } from '../http-common'
+import { http, httpAll } from 'http-common'
 
 const getAll = () => {
     return httpAll
