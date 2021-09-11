@@ -2,14 +2,28 @@ import React from 'react'
 
 import classes from './UserList.module.css'
 
-import AssetsService from 'services/assetsService'
+import * as AssetsActions from 'store/ducks/assets/actions'
+import { ApplicationState } from 'store'
+import { bindActionCreators, Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import IUsersData from 'models/UsersModel'
 
 import UserModal from 'components/UserModal/UserModal'
 
 
-const UsersLIst: React.FC = () => {
-    let [users, setUsers] = React.useState<Array<IUsersData>>([])
+interface StateProps {
+    users: Array<IUsersData>,
+}
+
+interface DispatchProps {
+    loadRequest(): void
+}
+
+type Props = StateProps & DispatchProps
+
+
+const UsersLIst: React.FC<Props> = props => {
     let [currentUser, setCurrentUser] = React.useState<number>(-1)
     let [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 
@@ -26,9 +40,8 @@ const UsersLIst: React.FC = () => {
     }
 
     React.useEffect(() => {
-        AssetsService.getAllUsers()
-            .then(response => setUsers(response.data))
-    }, [])
+        props.loadRequest()
+    }, [props])
 
 
     return (
@@ -44,7 +57,7 @@ const UsersLIst: React.FC = () => {
                 </thead>
                 <tbody>
                     {
-                        users.map((user, index) => {
+                        props.users.map((user, index) => {
                             return (
                                 <tr 
                                     key={`${user.name}-${index}`}
@@ -61,7 +74,7 @@ const UsersLIst: React.FC = () => {
             </table>
             {isModalOpen &&
                 <UserModal 
-                    user={users[currentUser]} 
+                    user={props.users[currentUser]} 
                     open={isModalOpen}
                     modalHandler={openModal}
                 />
@@ -70,4 +83,12 @@ const UsersLIst: React.FC = () => {
     )
 }
 
-export default UsersLIst
+
+const mapStateToProps = (state: ApplicationState) => ({
+    users: state.assets.users
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => 
+    bindActionCreators(AssetsActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(UsersLIst)

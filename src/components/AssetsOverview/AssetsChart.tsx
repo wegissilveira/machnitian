@@ -1,8 +1,7 @@
 import React from 'react'
 
-import classes from './AssetsOverview.module.css'
+import classes from './AssetsChart.module.css'
 
-// import { Link } from 'react-router-dom'
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 
@@ -45,36 +44,52 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
         }
         
     }, [overview, props.assets, initialMount])
-
+    
     const options = {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
             plotShadow: false,
             type: 'pie',
-            backgroundColor: 'rgb(245, 245, 245)'
-          },
-          title: {
+            backgroundColor: 'rgb(245, 245, 245)',
+            margin: [0, 0, 0, 0],
+            spacingTop: 0,
+            spacingBottom: 0,
+            spacingLeft: 0,
+            spacingRight: 0,
+            selectionMarkerFill: 'none',
+        },
+        title: {
             text: `Total: ${overview.totalAssets}`,
-            y:200
-          },
+            y: window.screen.width >= 1366 ? 20 : 200,
+            style: {
+                fontWeight: 900
+            }
+        },
         legend:{
           enabled:true
         },
         plotOptions: {
-        pie: {
-                allowPointSelect: true,
+            pie: {
+                size:'70%',
+                allowPointSelect: false,
                 cursor: 'pointer',
-                showInLegend: true,
+                showInLegend: window.screen.width >= 1366 ? false : true,
                 dataLabels: {
-                enabled: false
+                    enabled: window.screen.width >= 1366 ? true : false,
+                    style: {
+                        fontWeight: 500,
+                        fontSize: 20+'px'
+                    }
+                }
             }
-        }
         },
+        
         series: [{
             name: 'Assets',
-            colorByPoint: true,
-                innerSize: '70%',
+            colorByPoint: false,
+            innerSize: '70%',
+            slicedOffset: 0,
             data: [{
                 name: `Funcionando (${overview.assetsInOperation})`,
                 color: 'green',
@@ -87,16 +102,25 @@ const AssetsOverview: React.FC<{assets: IAssetsData[]}> = props => {
                 name: `Paradas (${overview.assetsInDowntime})`,
                 color: 'red',
                 y: overview.assetsInDowntime
-            }]
+            }],
+            point: {
+                events: {
+                    legendItemClick: function () {
+                        return false; 
+                    }
+                }
+            },
         }]
     }
-
+    
 
     return (
         <div className={classes['assetsOverview-container']}>
             <h1>ATIVOS</h1>
-            <AssetsReport assetsReport={overview}/>
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <div className={classes['assetsOverview-subContainer']}>
+                <AssetsReport assetsReport={overview}/>
+                <HighchartsReact highcharts={Highcharts} options={options} />
+            </div>
         </div>
     )
 }

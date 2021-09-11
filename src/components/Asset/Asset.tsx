@@ -2,27 +2,58 @@ import React from 'react'
 
 import classes from './Asset.module.css'
 
+import * as AssetsActions from 'store/ducks/assets/actions'
+import { ApplicationState } from 'store'
+import { bindActionCreators, Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import { RouteComponentProps } from 'react-router'
 
-import AssetsService from 'services/assetsService'
 import IAssetsData from 'models/AssetsModel'
+import IUnitsData from 'models/UnitsModel'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconName } from '@fortawesome/fontawesome-common-types'
 
+import SelectAgent from './SelectAgent/SelectAgent'
 
+
+interface StateProps {
+    assets: Array<IAssetsData>,
+    units: Array<IUnitsData>,
+}
+
+interface DispatchProps {
+    loadRequest(): void
+}
 
 type TParams = {id: string}
 
 interface MyComponent extends RouteComponentProps<TParams> {}
 
+type Props = StateProps & DispatchProps & MyComponent
 
-const AssetComponent: React.FC<MyComponent> = props => {
-    let [currentAsset, setActualAsset] = React.useState<IAssetsData>()
+
+const AssetComponent: React.FC<Props> = props => {
+
+    let [currentAsset, setCurrentAsset] = React.useState<IAssetsData>()
+    let [currentUnit, setCurrentUnit] = React.useState<IUnitsData>()
     let [colors, ] = React.useState<string[]>(['#2563eb', '#ffad00', '#ff2e3b', 'green', 'rgb(255, 94, 0)'])
     let [statusIcon, setStatusIcon] = React.useState<IconName>('check-circle')
     let [statusInfo, setStatusInfo] = React.useState<string[]>([colors[0], 'Funcionando'])
     let [healthColor, setHealthColor] = React.useState<string>(colors[3])
+    let [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
 
+
+    const openModal = ():void => {
+        if (isModalOpen) {
+            setIsModalOpen(false)
+            document.body.style.overflow = 'scroll'
+        } else {
+            setIsModalOpen(true)
+            document.body.style.overflow = 'hidden' 
+        }
+    }
 
     const capitalize = (str: string | undefined) => {
         let splitStr = str?.toLowerCase().split(' ');
@@ -33,14 +64,7 @@ const AssetComponent: React.FC<MyComponent> = props => {
             
             return splitStr.join(' '); 
         }
-        
     }
-
-    React.useEffect(() => {
-        AssetsService.getAsset(props.match.params.id)
-            .then(response => setActualAsset(response.data))
-    }, [props.match.params.id])
-
 
     React.useEffect(() => {
         let currentStatus = []
@@ -80,9 +104,31 @@ const AssetComponent: React.FC<MyComponent> = props => {
         
     }, [colors, currentAsset?.healthscore])
 
+    React.useEffect(() => {
+        props.loadRequest()
+    }, [props])
+
+    React.useEffect(() => {
+        props.assets.forEach(asset => {
+            asset.id === Number(props.match.params.id) && setCurrentAsset(asset)
+        })
+    }, [props.assets, props.match.params.id])
+
+    React.useEffect(() => {
+        props.units.forEach(unit => {
+            unit.id === currentAsset?.companyId && setCurrentUnit(unit)
+        })
+    }, [props.units, currentAsset?.companyId])
+    
 
     return (
         <div className={classes['asset-container']}>
+            {isModalOpen && 
+                <SelectAgent 
+                    modalHandler={openModal} 
+                    asset={currentAsset?.name}
+                />
+            }
             <div className={classes['assetImg-container']}>
                 <img 
                     src={currentAsset?.image} 
@@ -163,14 +209,22 @@ const AssetComponent: React.FC<MyComponent> = props => {
                             icon={['fas', 'user-cog']} 
                             color={colors[0]}   
                         />
-                        <p><span>Responsável:</span> {capitalize('testador um')}</p>
+                        {currentAsset?.agent && 
+                            <p><span>Responsável:</span> {capitalize('testador um')}</p>
+                        }
+                        {!currentAsset?.agent && 
+                            <React.Fragment>
+                                <p><span>Responsável:</span></p>
+                                <button onClick={openModal}>Selecione</button>
+                            </React.Fragment>
+                        }
                     </div>
                     <div>
                         <FontAwesomeIcon 
                             icon={['far', 'building']} 
                             color={colors[0]}  
                         />
-                        <p><span>Unidade:</span> {currentAsset?.unitId}</p>
+                        <p><span>Unidade:</span> {capitalize(currentUnit?.name)}</p>
                     </div>
                 </div>
                 <div>
@@ -202,4 +256,13 @@ const AssetComponent: React.FC<MyComponent> = props => {
     )
 }
 
-export default AssetComponent
+
+const mapStateToProps = (state: ApplicationState) => ({
+    assets: state.assets.assets,
+    units: state.assets.units,
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => 
+    bindActionCreators(AssetsActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AssetComponent)

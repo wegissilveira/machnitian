@@ -2,18 +2,38 @@ import React from 'react'
 
 import classes from './UserModal.module.css'
 
+import * as AssetsActions from 'store/ducks/assets/actions'
+import { ApplicationState } from 'store'
+import { bindActionCreators, Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import IUsersData from 'models/UsersModel'
+import IUnitsData from 'models/UnitsModel'
 
 
-const UserModal: React.FC<{
-    user: IUsersData, 
+interface StateProps {
+    units: Array<IUnitsData>
+}
+
+interface DispatchProps {
+    loadRequest(): void
+}
+
+interface OwnProps {
+    user: IUsersData,
     open: boolean,
     modalHandler: (userIndex: number) => void
-}> = props => {
-    
+}
 
+type Props = StateProps & DispatchProps & OwnProps
+
+
+const UserModal: React.FC<Props> = props => {
+
+    let [updatedUser, setUpdatedUser] = React.useState<IUsersData>()
+    
     const closeModal = (): void => {
         props.modalHandler(-1)
     }
@@ -21,6 +41,15 @@ const UserModal: React.FC<{
     let style = {
         display: props.open ? 'block' : 'none',
     }
+
+    React.useEffect(() => {
+        props.units.forEach(unit => {
+            unit.id === props.user.companyId && setUpdatedUser({
+                ...props.user,
+                companyName: unit.name
+            })
+        })
+    }, [props.units, props.user])
 
 
     return (
@@ -42,9 +71,9 @@ const UserModal: React.FC<{
                     </div>
                     <FontAwesomeIcon icon={['fas', 'user-circle']} size="4x"/>
                     <div className={classes['UserModal-details']}>
-                        <p><span>Id: </span>{props.user.id}</p>
-                        <p><span>E-mail: </span>{props.user.email}</p>
-                        <p><span>Unidade: </span>{props.user.unitId}</p>
+                        <p><span>Id: </span>{updatedUser?.id}</p>
+                        <p><span>E-mail: </span>{updatedUser?.email}</p>
+                        <p><span>Unidade: </span>{updatedUser?.companyName}</p>
                     </div>
                 </div>
             </div>
@@ -52,4 +81,12 @@ const UserModal: React.FC<{
     )
 }
 
-export default UserModal
+
+const mapStateToProps = (state: ApplicationState) => ({
+    units: state.assets.units
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => 
+    bindActionCreators(AssetsActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(UserModal)

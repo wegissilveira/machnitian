@@ -1,3 +1,18 @@
+button {
+    border: none;
+    background-color: #1e3c8f;
+    color: #fff;
+    margin-left: 10px;
+    height: 25px;
+    box-shadow: -2px 3px 3px 1px rgb(139, 139, 139);
+
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
 @media (min-width: 768px) {
     .asset-container {
         display: grid;

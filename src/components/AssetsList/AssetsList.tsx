@@ -2,20 +2,33 @@ import React from 'react'
 
 import classes from './AssetsList.module.css'
 
+import * as AssetsActions from 'store/ducks/assets/actions'
+import { ApplicationState } from 'store'
+import { bindActionCreators, Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import AssetsService from 'services/assetsService'
 import IAssetsData from 'models/AssetsModel'
 
 
-const AssetsList: React.FC = () => {
-    let [assets, setAssets] = React.useState<Array<IAssetsData>>([])
+interface StateProps {
+    assets: Array<IAssetsData>,
+}
+
+interface DispatchProps {
+    loadRequest(): void
+}
+
+type Props = StateProps & DispatchProps
+
+
+const AssetsList: React.FC<Props> = props => {
 
     React.useEffect(() => {
-        AssetsService.getAllAssets()
-            .then(response => setAssets(response.data))
-    }, [])
+        props.loadRequest()
+    }, [props])
 
 
     return (
@@ -32,11 +45,12 @@ const AssetsList: React.FC = () => {
                 </thead>
                 <tbody>
                     {
-                        assets.map((asset, index) => {
-                            return <tr key={`${asset.name}-${index}`}>
-                                    <td data-label="Id"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.id}</Link></td>
-                                    <td data-label="Nome"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.name}</Link></td>
-                                    <td data-label="Status"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >
+                        props.assets.map((asset, index) => {
+                        return <tr key={`${asset.name}-${index}`}>
+                                <td data-label="Id"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.id}</Link></td>
+                                <td data-label="Nome"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.name}</Link></td>
+                                <td data-label="Status">
+                                    <Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >
                                         {asset.status === 'inOperation' && 
                                             <FontAwesomeIcon 
                                                 icon={['fas', 'check-circle']} 
@@ -58,9 +72,10 @@ const AssetsList: React.FC = () => {
                                                 color="#ff2e3b" 
                                             />
                                         }
-                                    </Link></td>
-                                    <td data-label="Saúde"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.healthscore}</Link></td>
-                                </tr>
+                                    </Link>
+                                </td>
+                                <td data-label="Saúde"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.healthscore}</Link></td>
+                            </tr>
                         })
                     }
                 </tbody>
@@ -69,4 +84,12 @@ const AssetsList: React.FC = () => {
     )
 }
 
-export default AssetsList
+
+const mapStateToProps = (state: ApplicationState) => ({
+    assets: state.assets.assets
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => 
+    bindActionCreators(AssetsActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(AssetsList)

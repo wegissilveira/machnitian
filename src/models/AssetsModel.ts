@@ -1,5 +1,5 @@
 export default interface IAssetsData {
-    id: number,
+    id: number | string,
     name: string,
     model: string,
     image: string,
@@ -17,5 +17,6 @@ export default interface IAssetsData {
     companyId: number,
     unitId: number,
     healthscore: number,
-    status: string
+    status: string,
+    agent?: string
 }

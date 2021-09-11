@@ -6,7 +6,7 @@ import rootReducer from './ducks/rootReducer'
 import rootSaga from './ducks/rootSaga'
 
 export interface ApplicationState {
-  assets: AssetsState
+  assets: AssetsState,
 }
 
 const sagaMiddleware = createSagaMiddleware()

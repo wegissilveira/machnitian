@@ -4,4 +4,5 @@ export default interface IUsersData {
     name: string,
     unitId: number,
     companyId: number,
+    companyName?: string
 }

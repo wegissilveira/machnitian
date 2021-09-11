@@ -2,6 +2,7 @@ import React from 'react'
 
 import classes from './Overview.module.css'
 
+import IAssetsData from 'models/AssetsModel'
 import IUsersData from 'models/UsersModel'
 import ICompanyData from 'models/CompanyModel'
 import IUnitsData from 'models/UnitsModel'
@@ -11,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const UsersOverview: React.FC<{
-    values: IUsersData[] | ICompanyData[] | IUnitsData[],
+    values: IUsersData[] | ICompanyData[] | IUnitsData[] | IAssetsData[],
     title: string,
     link: string
 }> = props => {

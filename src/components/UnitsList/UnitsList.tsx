@@ -2,19 +2,30 @@ import React from 'react'
 
 import classes from './UnitsList.module.css'
 
-import AssetsService from 'services/assetsService'
+import * as AssetsActions from 'store/ducks/assets/actions'
+import { ApplicationState } from 'store'
+import { bindActionCreators, Dispatch } from 'redux'
+import { connect } from 'react-redux'
+
 import IUnitsData from 'models/UnitsModel'
 
 
-const UnitsList: React.FC = () => {
-    let [units, setUnits] = React.useState<Array<IUnitsData>>([])
+interface StateProps {
+    units: Array<IUnitsData>,
+}
+
+interface DispatchProps {
+    loadRequest(): void
+}
+
+type Props = StateProps & DispatchProps
+
+
+const UnitsList: React.FC<Props> = props => {
 
     React.useEffect(() => {
-        AssetsService.getAllUnits()
-            .then(response => setUnits(response.data))
-    }, [])
-
-    console.log(units)
+        props.loadRequest()
+    }, [props])
 
 
     return (
@@ -29,7 +40,7 @@ const UnitsList: React.FC = () => {
                 </thead>
                 <tbody>
                     {
-                        units.map((unit, index) => {
+                        props.units.map((unit, index) => {
                             return (
                                 <tr key={`${unit.name}-${index}`}
                                 >
@@ -45,4 +56,12 @@ const UnitsList: React.FC = () => {
     )
 }
 
-export default UnitsList
+
+const mapStateToProps = (state: ApplicationState) => ({
+    units: state.assets.units
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) => 
+    bindActionCreators(AssetsActions, dispatch)
+
+export default connect(mapStateToProps, mapDispatchToProps)(UnitsList)

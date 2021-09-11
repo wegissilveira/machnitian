@@ -1,0 +1,64 @@
+.SelectAgent-container {
+    background-color: rgba(0, 0, 0, 0.466);
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 9999;
+}
+
+.SelectAgent-subContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background-color: #fff;
+    height: 70%;
+    width: 80%;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+}
+
+.SelectAgent-subContainer > svg {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.SelectAgent-subContainer > h3 {
+    padding-top: 50px;
+}
+
+.SelectAgent-inputs--container {
+    display: flex;
+    flex-direction: column;
+
+    width: 80%;
+    height: 70%;
+    margin-left: 10%;
+    margin-top: 5%;
+    overflow: scroll;
+}
+
+.SelectAgent-inputs--container > div {
+    border-bottom: 1px solid rgb(139, 139, 139);
+    padding-bottom: 8px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.SelectAgent-inputs--container > div label {
+    margin-left: 10px;
+    line-height: 1em;
+}
