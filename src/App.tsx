@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import Layout from 'containers/Layout/Layout'
@@ -23,7 +23,7 @@ library.add(fas, far)
 const  App = () =>  {
   return (
     <Provider store={store}>
-      <BrowserRouter>
+      <HashRouter>
         <Layout>
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} exact component={GeneralOverview} />
@@ -36,7 +36,7 @@ const  App = () =>  {
             <Route path={`${process.env.PUBLIC_URL}/unity/:id`} exact component={Unity} />
           </Switch>
         </Layout>
-      </BrowserRouter>
+      </HashRouter>
     </Provider>
   );
 }
