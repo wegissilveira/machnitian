@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td>
- React Application built as a required step of Tractian's Front-end developer selection process.
+ Application created to show a list of assets, users and details about a comopany.
 </td>
 </tr>
 </table>
