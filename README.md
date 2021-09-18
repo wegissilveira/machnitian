@@ -9,7 +9,7 @@
 </table>
 
 ## Demo
-Here is a working live demo :  http://wegis.com.br/tractian/#/tractian/
+Here is a working live demo :  https://wegis.com.br/tractian/#/tractian/
 
 
 ## Website
