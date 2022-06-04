@@ -3,7 +3,7 @@
 <table>
 <tr>
 <td>
- Application created to show a list of assets, users and details about a comopany.
+ Application created to show a list of assets, users and details about a company.
 </td>
 </tr>
 </table>
