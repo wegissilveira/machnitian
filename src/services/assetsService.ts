@@ -4,6 +4,10 @@ const getAll = () => {
     return httpAll
 }
 
+// const getAllTeste = () => {
+//     return httpAllTeste
+// }
+
 const getAllAssets = () => {
     return http.get('/assets')
 }
@@ -41,6 +45,7 @@ const AssetsService = {
     getUnity,
     getCompany,
     getAll
+    // getAllTeste
 }
 
 export default AssetsService

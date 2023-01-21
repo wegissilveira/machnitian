@@ -1,0 +1,122 @@
+.Asset-healthInfo--container {
+   display: none;
+}
+
+@media (min-width: 768px) {
+   .Asset-healthInfo--container {
+      margin-left: 5%;
+      margin-right: 10%;
+      height: 45vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      background-color: #fff;
+      box-shadow: -3px 4px 10px 1px #aaa;
+
+      border-radius: 5px;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      -ms-border-radius: 5px;
+      -o-border-radius: 5px;
+   }
+}
+
+@media (min-width: 1366px) {
+   .Asset-healthInfo--container {
+      flex-direction: row;
+   }
+}
+
+.Health-notation {
+   width: fit-content;
+}
+
+.Health-notation--circle {
+   position: relative;
+   width: 90px;
+   height: 90px;
+   border: 6px solid;
+   background-color: rgba(204, 204, 204, 0.74);
+
+   border-radius: 50%;
+   -webkit-border-radius: 50%;
+   -moz-border-radius: 50%;
+   -ms-border-radius: 50%;
+   -o-border-radius: 50%;
+}
+
+@media (min-width: 768px) {
+   .Health-notation {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 40%;
+   }
+
+   .Health-notation>h2 {
+      color: rgb(105, 103, 103);
+   }
+
+   .Health-notation--circle {
+      margin-top: -30%;
+      background-color: transparent;
+   }
+
+   .Health-notation svg {
+      transform: translate(-100%, -25%);
+      -webkit-transform: translate(-100%, -25%);
+      -moz-transform: translate(-100%, -25%);
+      -ms-transform: translate(-100%, -25%);
+      -o-transform: translate(-100%, -25%);
+   }
+}
+
+@media (min-width: 1366px) {
+   .Health-notation {
+      height: 70%;
+   }
+}
+
+.Health-notation--circle>p {
+   position: absolute;
+   left: 50%;
+   bottom: 50%;
+   font-weight: bold;
+   font-size: 1.5em;
+
+   transform: translate(-50%, 50%);
+   -webkit-transform: translate(-50%, 50%);
+   -moz-transform: translate(-50%, 50%);
+   -ms-transform: translate(-50%, 50%);
+   -o-transform: translate(-50%, 50%);
+}
+
+.Health-notation svg {
+   transform: translate(-25%, -60%);
+   -webkit-transform: translate(-25%, -60%);
+   -moz-transform: translate(-25%, -60%);
+   -ms-transform: translate(-25%, -60%);
+   -o-transform: translate(-25%, -60%);
+}
+
+@media (min-width: 768px) {
+   .Health-notation svg {
+      transform: translate(-100%, -25%);
+      -webkit-transform: translate(-100%, -25%);
+      -moz-transform: translate(-100%, -25%);
+      -ms-transform: translate(-100%, -25%);
+      -o-transform: translate(-100%, -25%);
+   }
+}
+
+.Asset-HealthScore {
+   margin-top: -50%;
+
+   transform: translateX(-20%);
+   -webkit-transform: translateX(-20%);
+   -moz-transform: translateX(-20%);
+   -ms-transform: translateX(-20%);
+   -o-transform: translateX(-20%);
+}

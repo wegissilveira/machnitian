@@ -1,0 +1,14 @@
+- index.tsx
+   - app.tsx
+      - Layout.tsx
+         - GeneralOverview
+         - AssetComponent
+            - AssetContainer - NEW
+               - AssetImage - NEW
+               - AssetHealth - NEW
+               - AssetHealthMobile - NEW
+               - TechnicalSpecification - NEW
+                  - Specification - NEW
+               - AssetDetails - NEW
+                  - Details - NEW
+            - SelectAgent
