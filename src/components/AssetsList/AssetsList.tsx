@@ -1,95 +1,99 @@
-import React from 'react'
+import { useEffect, useState } from "react"
 
-import classes from './AssetsList.module.css'
-
-import * as AssetsActions from 'store/ducks/assets/actions'
-import { ApplicationState } from 'store'
-import { bindActionCreators, Dispatch } from 'redux'
-import { connect } from 'react-redux'
-
-import { Link } from 'react-router-dom'
+import * as AssetsActions from "store/ducks/assets/actions"
+import { ApplicationState } from "store"
+import { bindActionCreators, Dispatch } from "redux"
+import { connect } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import IAssetsData from 'models/AssetsModel'
-
+import IAssetsData, { Icon } from "models/AssetsModel"
+import ItemsList from "components/shared/ItemsList/ItemsList"
+import { ItemsListType } from "components/shared/ItemsList/ItemsList"
 
 interface StateProps {
-    assets: Array<IAssetsData>,
+   assets: Array<IAssetsData>
 }
 
 interface DispatchProps {
-    loadRequest(): void
+   loadRequest(): void
 }
 
 type Props = StateProps & DispatchProps
 
-
-const AssetsList: React.FC<Props> = props => {
-
-    React.useEffect(() => {
-        props.loadRequest()
-    }, [props])
-
-
-    return (
-        <div className={classes['AssetsList-container']}>
-            <h1>ASSETS LIST</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Saúde</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        props.assets.map((asset, index) => {
-                        return <tr key={`${asset.name}-${index}`}>
-                                <td data-label="Id"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.id}</Link></td>
-                                <td data-label="Nome"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.name}</Link></td>
-                                <td data-label="Status">
-                                    <Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >
-                                        {asset.status === 'inOperation' && 
-                                            <FontAwesomeIcon 
-                                                icon={['fas', 'check-circle']} 
-                                                size="2x"
-                                                color="#2563eb" 
-                                            />
-                                        }
-                                        {asset.status === 'inAlert' && 
-                                            <FontAwesomeIcon 
-                                                icon={['fas', 'exclamation-triangle']} 
-                                                size="2x"
-                                                color="#ffad00" 
-                                            />
-                                        }
-                                        {asset.status === 'inDowntime' && 
-                                            <FontAwesomeIcon 
-                                                icon={['fas', 'minus-square']} 
-                                                size="2x"
-                                                color="#ff2e3b" 
-                                            />
-                                        }
-                                    </Link>
-                                </td>
-                                <td data-label="Saúde"><Link to={`${process.env.PUBLIC_URL}/asset/${asset.id}`} >{asset.healthscore}</Link></td>
-                            </tr>
-                        })
-                    }
-                </tbody>
-            </table>
-        </div>
-    )
+type ItemsValuesType = {
+   link: boolean
+   id: number
+   name: string
+   status: JSX.Element
+   healthscore: number
 }
 
+const AssetsList = (props: Props) => {
+   const { assets, loadRequest } = props
+
+   const [assetsTableValue, setAssetsTableValue] = useState<ItemsValuesType[]>([])
+   const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<ItemsValuesType>>({} as ItemsListType<ItemsValuesType>)
+
+   useEffect(() => {    
+      const assetsTableValue = assets.map((asset) => {
+         let icon: Icon
+         let iconColor: string
+         switch(asset.status) {
+            case 'inOperation':
+               icon = 'check-circle'
+               iconColor = '#2563eb'
+               break
+            case 'inDowntime':
+               icon = 'minus-square'
+               iconColor = '#ff2e3b'
+               break
+            default:
+               icon = 'exclamation-triangle'
+               iconColor = '#ffad00'
+         }
+
+         const iconEl = <FontAwesomeIcon
+                  icon={['fas', icon]}
+                  size="2x"
+                  color={iconColor}
+               />
+
+         return {
+            link: true,
+            id: asset.id,
+            name: asset.name,
+            status: iconEl,
+            healthscore: asset.healthscore,
+         }
+      })      
+
+      setAssetsTableValue(assetsTableValue)
+   }, [assets])
+
+   useEffect(() => {
+      const ItemsListDetails = {
+         title: 'Lista de Ativos',
+         header: ["Id", "Nome", "Status", "Saúde"],
+         values: assetsTableValue,
+      }
+
+      setItemsListDetails(ItemsListDetails)
+   }, [assetsTableValue])
+
+   useEffect(() => {
+      loadRequest()
+   }, [props])
+
+   return (
+      <ItemsList itemsListDetails={ItemsListDetails} />
+   )
+}
 
 const mapStateToProps = (state: ApplicationState) => ({
-    assets: state.assets.assets
+   assets: state.assets.assets,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => 
-    bindActionCreators(AssetsActions, dispatch)
+const mapDispatchToProps = (dispatch: Dispatch) =>
+   bindActionCreators(AssetsActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(AssetsList)

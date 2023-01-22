@@ -27,7 +27,7 @@ export type DetailsKeyType = {
 }
 
 export default interface IAssetsData {
-    id: number | string,
+    id: number,
     name: string,
     model: string,
     image: string,

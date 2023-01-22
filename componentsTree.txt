@@ -12,3 +12,9 @@
                - AssetDetails - NEW
                   - Details - NEW
             - SelectAgent
+         - AssetsList
+         - UnitsList
+         - UsersLIst
+            - UserModal
+         - shared - NEW
+            - ItemsList - NEW

@@ -1,94 +1,96 @@
-import React from 'react'
+import {useState, useEffect} from "react"
 
-import classes from './UserList.module.css'
+import * as AssetsActions from "store/ducks/assets/actions"
+import { ApplicationState } from "store"
+import { bindActionCreators, Dispatch } from "redux"
+import { connect } from "react-redux"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-import * as AssetsActions from 'store/ducks/assets/actions'
-import { ApplicationState } from 'store'
-import { bindActionCreators, Dispatch } from 'redux'
-import { connect } from 'react-redux'
-
-import IUsersData from 'models/UsersModel'
-
-import UserModal from 'components/UserModal/UserModal'
-
+import IUsersData from "models/UsersModel"
+import ItemsList, { ItemsListType } from "components/shared/ItemsList/ItemsList"
+import UserModal from "components/UsersList/UserModal/UserModal"
 
 interface StateProps {
-    users: Array<IUsersData>,
+   users: Array<IUsersData>
 }
 
 interface DispatchProps {
-    loadRequest(): void
+   loadRequest(): void
 }
 
 type Props = StateProps & DispatchProps
 
-
-const UsersLIst: React.FC<Props> = props => {
-    let [currentUser, setCurrentUser] = React.useState<number>(-1)
-    let [isModalOpen, setIsModalOpen] = React.useState<boolean>(false)
-
-
-    const openModal = (userIndex: number):void => {
-        setCurrentUser(userIndex)
-        if (isModalOpen) {
-            setIsModalOpen(false)
-            document.body.style.overflow = 'scroll'
-        } else {
-            setIsModalOpen(true)
-            document.body.style.overflow = 'hidden' 
-        }
-    }
-
-    React.useEffect(() => {
-        props.loadRequest()
-    }, [props])
-
-
-    return (
-        <div className={classes['UserList-container']}>
-            <h1>LISTA DE ATIVOS</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Id</th>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Unidade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        props.users.map((user, index) => {
-                            return (
-                                <tr 
-                                    key={`${user.name}-${index}`}
-                                    onClick={() => openModal(index)}
-                                >
-                                    <td data-label="Id">{user.id}</td>
-                                    <td data-label="Nome">{user.name}</td>
-                                    <td data-label="Unidade">{user.unitId}</td>
-                                </tr>
-                            )
-                        })
-                    }
-                </tbody>
-            </table>
-            {isModalOpen &&
-                <UserModal 
-                    user={props.users[currentUser]} 
-                    open={isModalOpen}
-                    modalHandler={openModal}
-                />
-            }
-        </div>
-    )
+type UsersValuesType = {
+   id: number
+   name: string
+   unitId: number
+   editUser: JSX.Element
 }
 
+const UsersLIst = (props: Props) => {
+   const { users, loadRequest } = props
+
+   const [usersTableValue, setUsersTableValue] = useState<UsersValuesType[]>([])
+   const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<UsersValuesType>>({} as ItemsListType<UsersValuesType>)
+   const [currentUser, setCurrentUser] = useState<number>(-1)
+   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+
+   const openModal = (userIndex: number): void => {      
+      setCurrentUser(userIndex)
+      if (isModalOpen) {
+         setIsModalOpen(false)
+         document.body.style.overflow = "scroll"
+      } else {
+         setIsModalOpen(true)
+         document.body.style.overflow = "hidden"
+      }
+   }
+
+   useEffect(() => {
+      const usersTableValue = users.map((user) => {
+         return {
+            id: user.id,
+            name: user.name,
+            unitId: user.unitId,
+            editUser: <FontAwesomeIcon onClick={() => openModal(user.id)} icon={['fas', 'edit']} color="#1e3c8f" />
+         }
+      })     
+      setUsersTableValue(usersTableValue)
+   }, [users])
+
+   useEffect(() => {
+      const ItemsListDetails = {
+         title: "LISTA DE USUÁRIOS",
+         header: ["Id", "Nome", "Unidade", "Editar"],
+         values: usersTableValue,
+      }
+
+      setItemsListDetails(ItemsListDetails)
+   }, [usersTableValue])
+
+   useEffect(() => {
+      loadRequest()
+   }, [props])
+
+   return (
+      <>
+         <ItemsList itemsListDetails={ItemsListDetails} />
+         {isModalOpen && (
+            <UserModal
+               user={users[currentUser]}
+               open={isModalOpen}
+               modalHandler={openModal}
+            />
+         )}
+      </>
+   )
+}
 
 const mapStateToProps = (state: ApplicationState) => ({
-    users: state.assets.users
+   users: state.assets.users,
 })
 
-const mapDispatchToProps = (dispatch: Dispatch) => 
-    bindActionCreators(AssetsActions, dispatch)
+const mapDispatchToProps = (dispatch: Dispatch) =>
+   bindActionCreators(AssetsActions, dispatch)
 
 export default connect(mapStateToProps, mapDispatchToProps)(UsersLIst)

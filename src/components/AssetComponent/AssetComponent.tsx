@@ -10,7 +10,6 @@ import { connect } from "react-redux"
 import { RouteComponentProps } from "react-router"
 
 import IAssetsData, { Icon } from "models/AssetsModel"
-import IUnitsData from "models/UnitsModel"
 
 import SelectAgent from "./SelectAgent/SelectAgent"
 import AssetImage from "./AssetContainer/AssetImage/AssetImage"
@@ -21,7 +20,6 @@ import AssetContainer from "./AssetContainer/AssetContainer"
 
 interface StateProps {
    assets: Array<IAssetsData>
-   units: Array<IUnitsData>
 }
 
 interface DispatchProps {
@@ -37,7 +35,6 @@ type Props = StateProps & DispatchProps & MyComponent
 const AssetComponent = (props: Props) => {
    const {
       assets,
-      units,
       loadRequest,
       match
    } = props
@@ -139,8 +136,7 @@ const AssetComponent = (props: Props) => {
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
-   assets: state.assets.assets,
-   units: state.assets.units,
+   assets: state.assets.assets
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>
