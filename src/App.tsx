@@ -7,7 +7,7 @@ import CompanyInfo from './components/CompanyInfo/CompanyInfo'
 import AssetsList from 'components/AssetsList/AssetsList'
 import AssetComponent from 'components/AssetComponent/AssetComponent'
 import UsersLIst from 'components/UsersList/UsersList'
-import UserModal from 'components/UsersList/UserModal/UserModal'
+import UserModal from 'components/UserModal/UserModal'
 import UnitsList from 'components/UnitsList/UnitsList'
 import Unity from 'components/Unity/Unity'
 

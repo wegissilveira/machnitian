@@ -4,9 +4,9 @@ import * as AssetsActions from "store/ducks/assets/actions"
 import { ApplicationState } from "store"
 import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import useBuildTableValues from "./useBuildTableValues"
 
-import IAssetsData, { Icon } from "models/AssetsModel"
+import IAssetsData from "models/AssetsModel"
 import ItemsList from "components/shared/ItemsList/ItemsList"
 import { ItemsListType } from "components/shared/ItemsList/ItemsList"
 
@@ -34,39 +34,10 @@ const AssetsList = (props: Props) => {
    const [assetsTableValue, setAssetsTableValue] = useState<ItemsValuesType[]>([])
    const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<ItemsValuesType>>({} as ItemsListType<ItemsValuesType>)
 
+   const buildTableValues = useBuildTableValues()
+
    useEffect(() => {    
-      const assetsTableValue = assets.map((asset) => {
-         let icon: Icon
-         let iconColor: string
-         switch(asset.status) {
-            case 'inOperation':
-               icon = 'check-circle'
-               iconColor = '#2563eb'
-               break
-            case 'inDowntime':
-               icon = 'minus-square'
-               iconColor = '#ff2e3b'
-               break
-            default:
-               icon = 'exclamation-triangle'
-               iconColor = '#ffad00'
-         }
-
-         const iconEl = <FontAwesomeIcon
-                  icon={['fas', icon]}
-                  size="2x"
-                  color={iconColor}
-               />
-
-         return {
-            link: true,
-            id: asset.id,
-            name: asset.name,
-            status: iconEl,
-            healthscore: asset.healthscore,
-         }
-      })      
-
+      const assetsTableValue = buildTableValues(assets)
       setAssetsTableValue(assetsTableValue)
    }, [assets])
 
@@ -82,7 +53,7 @@ const AssetsList = (props: Props) => {
 
    useEffect(() => {
       loadRequest()
-   }, [props])
+   }, [])
 
    return (
       <ItemsList itemsListDetails={ItemsListDetails} />

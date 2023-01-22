@@ -22,26 +22,30 @@ const ItemsList = <T extends itemsBaseType >(props: Props<T>) => {
       itemsListDetails
    } = props
 
+   if (!Object.keys(itemsListDetails).length) {
+      return null;
+   }
+
    return (
       <div className={classes["AssetsList-container"]}>
          <h1>{itemsListDetails.title}</h1>
          <table>
             <thead>
                <tr>
-                  {Object.keys(itemsListDetails).length > 0 && itemsListDetails.header.map((item, index) => {
+                  {itemsListDetails.header.map((item, index) => {
                      return <th key={`${item}-${index}`} scope="col">{item}</th>
                   })}
                </tr>
             </thead>
             <tbody>
-            {Object.keys(itemsListDetails).length > 0 && itemsListDetails.values.map((item, index) => (
-               <tr key={index}>
+            {itemsListDetails.values.map((item) => (
+               <tr key={item.id}>
                {
-                  Object.keys(item).map((key, index) => {
+                  Object.keys(item).map((key) => {
                      const k = key as keyof T                                         
                      return (
                         key !== 'link' &&
-                           <td key={key+'-'+index} >
+                           <td key={key} >
                               {(item).hasOwnProperty('link') ? <Link to={`${process.env.PUBLIC_URL}/asset/${item.id}`}>{item[k]}</Link> : item[k] }
                            </td>
                      )

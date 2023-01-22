@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import IUsersData from "models/UsersModel"
 import ItemsList, { ItemsListType } from "components/shared/ItemsList/ItemsList"
-import UserModal from "components/UsersList/UserModal/UserModal"
+import UserModal from "components/UserModal/UserModal"
 
 interface StateProps {
    users: Array<IUsersData>
