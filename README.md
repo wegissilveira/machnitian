@@ -39,7 +39,8 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 
 - [React](https://reactjs.org/) - React makes it painless to create interactive UIs.
 - [Redux](https://redux.js.org/) - A Predictable State Container for JS Apps.
-- [CSS](https://www.w3schools.com/css/) - Cascading Style Sheets is a style sheet language used for describing the presentation of a document written in a markup language.
+- [SASS](https://sass-lang.com/) - Sass is the most mature, stable, and powerful professional grade CSS extension language in the world.
 - [TypeScript](https://www.typescriptlang.org/) - A strongly typed programming language which builds on JavaScript giving you better tooling at any scale..
 - [Highcharts](https://www.highcharts.com/) - Javascript library to create interactive charts for web and mobile projects.
 - [Axios](https://axios-http.com/docs/intro) - A a promise-based HTTP Client for node.js and the browser.
+- [Font Awesome](https://fontawesome.com/v5/docs/web/use-with/react) - Font Awesome is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.

@@ -17,7 +17,7 @@ type Props<T> = {
    itemsListDetails: ItemsListType<T>
 }
 
-const ItemsList = <T extends itemsBaseType >(props: Props<T>) => {
+const ItemsList = <T extends itemsBaseType>(props: Props<T>) => {
    const { 
       itemsListDetails
    } = props

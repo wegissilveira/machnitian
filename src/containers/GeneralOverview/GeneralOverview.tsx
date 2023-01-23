@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import { Component } from "react";
 
 import classes from "./GeneralOverview.module.scss";
 
@@ -12,7 +12,7 @@ import IUsersData from "models/UsersModel";
 import IUnitsData from "models/UnitsModel";
 import ICompanyData from "models/CompanyModel";
 
-import AssetsOverview from "components/AssetsOverview/AssetsChart";
+import AssetsOverview from "components/AssetsOverview/AssetsOverview";
 import Overview from "components/Overview/Overview";
 
 interface StateProps {
@@ -38,14 +38,14 @@ class GeneralOverview extends Component<Props> {
       const { assets, users, units, company } = this.props;
 
       return (
-         <React.Fragment>
+         <>
             <AssetsOverview assets={assets} />
             <h1 className={classes["Overview-title"]}>EMPRESA</h1>
-            <Overview title={"Empresa"} link={"/"} values={company} />
+            <Overview title={"Empresa"} values={company} />
             <Overview title={"Ativos"} link={"assets-list"} values={assets} />
             <Overview title={"Unidades"} link={"units-list"} values={units} />
             <Overview title={"Usuários"} link={"users-list"} values={users} />
-         </React.Fragment>
+         </>
       );
    }
 }

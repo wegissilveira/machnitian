@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import IUsersData from "models/UsersModel"
 import ItemsList, { ItemsListType } from "components/shared/ItemsList/ItemsList"
-import UserModal from "components/UserModal/UserModal"
+import UserModal from "components/UsersList/UserModal/UserModal"
 
 interface StateProps {
    users: Array<IUsersData>
@@ -31,12 +31,11 @@ const UsersLIst = (props: Props) => {
    const { users, loadRequest } = props
 
    const [usersTableValue, setUsersTableValue] = useState<UsersValuesType[]>([])
-   const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<UsersValuesType>>({} as ItemsListType<UsersValuesType>)
+   const [ItemsListDetails, setItemsListDetails] = useState({} as ItemsListType<UsersValuesType>)
    const [currentUser, setCurrentUser] = useState<number>(-1)
    const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
    const openModal = (userIndex: number): void => {      
-      setCurrentUser(userIndex)
       if (isModalOpen) {
          setIsModalOpen(false)
          document.body.style.overflow = "scroll"
@@ -44,6 +43,7 @@ const UsersLIst = (props: Props) => {
          setIsModalOpen(true)
          document.body.style.overflow = "hidden"
       }
+      setCurrentUser(userIndex - 1)      
    }
 
    useEffect(() => {

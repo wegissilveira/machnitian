@@ -1,8 +1,8 @@
 export default interface IUsersData {
-    id: number,
-    email: string,
-    name: string,
-    unitId: number,
-    companyId: number,
-    companyName?: string
+   id: number
+   email: string
+   name: string
+   unitId: number
+   companyId: number
+   companyName?: string
 }

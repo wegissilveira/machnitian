@@ -32,7 +32,7 @@ const AssetsList = (props: Props) => {
    const { assets, loadRequest } = props
 
    const [assetsTableValue, setAssetsTableValue] = useState<ItemsValuesType[]>([])
-   const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<ItemsValuesType>>({} as ItemsListType<ItemsValuesType>)
+   const [ItemsListDetails, setItemsListDetails] = useState({} as ItemsListType<ItemsValuesType>)
 
    const buildTableValues = useBuildTableValues()
 

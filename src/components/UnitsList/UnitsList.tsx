@@ -28,7 +28,7 @@ const UnitsList = (props: Props) => {
    const { units, loadRequest } = props
 
    const [unitsTableValue, setUnitsTableValue] = useState<UnitsValuesType[]>([])
-   const [ItemsListDetails, setItemsListDetails] = useState<ItemsListType<UnitsValuesType>>({} as ItemsListType<UnitsValuesType>)
+   const [ItemsListDetails, setItemsListDetails] = useState({} as ItemsListType<UnitsValuesType>)
 
    useEffect(() => {
       const assetsTableValue = units.map((unit) => {

@@ -1,4 +1,4 @@
-import classes from "./Footer.module.scss";
+import classes from "./Footer.module.scss"
 
 const Footer = () => {
    return (
@@ -8,7 +8,7 @@ const Footer = () => {
             <a href="https://www.wegis.com.br">Wegis Silveira</a>
          </p>
       </div>
-   );
-};
+   )
+}
 
-export default Footer;
+export default Footer

@@ -1,5 +1,5 @@
 export default interface IUnitsData {
-    id: number,
-    name: string,
-    companyId: number
+   id: number
+   name: string
+   companyId: number
 }

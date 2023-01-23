@@ -7,9 +7,8 @@ import CompanyInfo from './components/CompanyInfo/CompanyInfo'
 import AssetsList from 'components/AssetsList/AssetsList'
 import AssetComponent from 'components/AssetComponent/AssetComponent'
 import UsersLIst from 'components/UsersList/UsersList'
-import UserModal from 'components/UserModal/UserModal'
+import UserModal from 'components/UsersList/UserModal/UserModal'
 import UnitsList from 'components/UnitsList/UnitsList'
-import Unity from 'components/Unity/Unity'
 
 import store from 'store'
 
@@ -33,7 +32,6 @@ const  App = () =>  {
             <Route path={`${process.env.PUBLIC_URL}/users-list/`} exact component={UsersLIst} />
             <Route path={`${process.env.PUBLIC_URL}/user/:id`} exact component={UserModal} />
             <Route path={`${process.env.PUBLIC_URL}/units-list/`} exact component={UnitsList} />
-            <Route path={`${process.env.PUBLIC_URL}/unity/:id`} exact component={Unity} />
           </Switch>
         </Layout>
       </HashRouter>
