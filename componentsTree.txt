@@ -2,6 +2,9 @@
    - app.tsx
       - Layout.tsx
          - GeneralOverview
+            - Overview
+            - AssetsOverview 
+               - AssetsReport
          - AssetComponent
             - AssetContainer - NEW
                - AssetImage - NEW
@@ -18,11 +21,8 @@
             - UserModal
          - shared - NEW
             - ItemsList - NEW
-         - AssetsOverview 
-            - AssetsReport
          - CompanyInfo
          - Footer
          - Navigation
             - NavigationMobile
-         - Overview
-      - GeneralOverview
+         

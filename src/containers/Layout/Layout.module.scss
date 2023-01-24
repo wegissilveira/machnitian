@@ -5,5 +5,10 @@
    min-height: 100vh;
    main {
       flex: 1;
+      background-color: #171932;
+      @media (min-width: 1024px) {
+         width: 75%;
+         margin-left: 25%;
+      }
    }
 }

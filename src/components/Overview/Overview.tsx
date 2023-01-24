@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-import classes from "./Overview.module.css"
+import classes from "./Overview.module.scss"
 
 import IAssetsData from "models/AssetsModel"
 import IUsersData from "models/UsersModel"
