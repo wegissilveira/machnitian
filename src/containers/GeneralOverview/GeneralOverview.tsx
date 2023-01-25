@@ -14,6 +14,7 @@ import ICompanyData from "models/CompanyModel"
 
 import AssetsOverview from "components/AssetsOverview/AssetsOverview"
 import Overview from "components/Overview/Overview"
+import GeneralInfo from "components/GeneralInfo/GeneralInfo"
 
 interface StateProps {
    assets: Array<IAssetsData>
@@ -41,13 +42,13 @@ class GeneralOverview extends Component<Props> {
          <div className={classes['Overview-wrapper']}>
             <AssetsOverview assets={assets} />
             {/* <h1 className={classes["Overview-title"]}>EMPRESA</h1> */}
-            <div className={classes['Overview-sidebar--wrapper']}>
+            {/* <div className={classes['Overview-sidebar--wrapper']}>
                <Overview title={"Empresa"} values={company} />
                <Overview title={"Ativos"} link={"assets-list"} values={assets} />
                <Overview title={"Unidades"} link={"units-list"} values={units} />
                <Overview title={"Usuários"} link={"users-list"} values={users} />
-            </div>
-            
+            </div> */}
+            <GeneralInfo />
          </div>
       )
    }

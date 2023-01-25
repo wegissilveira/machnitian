@@ -4,14 +4,14 @@ import classes from "./AssetsOverview.module.scss"
 
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
-import { CircularProgressbar } from 'react-circular-progressbar';
-import 'react-circular-progressbar/dist/styles.css';
+
 
 // import AssetsService from '../../services/assetsService'
 import IAssetsData from "models/AssetsModel"
 import TAssetsReport from "models/AssetsReportModel"
 
 import AssetsReport from "./AssetsReport/AssetsReport"
+import AssetsOverviewCircle from "./AssetsOverviewCircle/AssetsOverviewCircle"
 
 
 type Props = {
@@ -128,12 +128,26 @@ const AssetsOverview = (props: Props) => {
    }
 
    return (
-      <div className={classes["assetsOverview-container"]}>
+      <div className={classes["AssetsOverview-container"]}>
          <h1>ATIVOS</h1>
-         <div className={classes["assetsOverview-subContainer"]}>
-         {/* <CircularProgressbar value={66} text={`66%`} />; */}
-            <AssetsReport assetsReport={overview} />
-            <HighchartsReact highcharts={Highcharts} options={options} />
+         <div className={classes["AssetsOverview-subContainer"]}>
+            <AssetsOverviewCircle 
+               text={'Funcionando'}
+               color={'#38c2cb'}
+               value={(overview.assetsInOperation / overview.totalAssets) * 100}
+            />
+            <AssetsOverviewCircle 
+               text={'Em Alerta'}
+               color={'orange'}
+               value={(overview.assetsInAlert / overview.totalAssets) * 100}
+            />
+            <AssetsOverviewCircle 
+               text={'Paradas'}
+               color={'red'}
+               value={(overview.assetsInDowntime / overview.totalAssets) * 100}
+            />
+            {/* <AssetsReport assetsReport={overview} /> */}
+            {/* <HighchartsReact highcharts={Highcharts} options={options} /> */}
          </div>
       </div>
    )

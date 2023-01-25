@@ -3,7 +3,9 @@
       - Layout.tsx
          - GeneralOverview
             - Overview
+            - GeneralInfo
             - AssetsOverview 
+               - AssetsOverviewCircle
                - AssetsReport
          - AssetComponent
             - AssetContainer - NEW

@@ -1,15 +1,18 @@
 @media (min-width: 1366px) {
-   .assetsOverview-container {
+   .AssetsOverview-container {
       width: 86%;
       margin-left: 7%;
+      .AssetsOverview-text {
+
+      }
    }
 }
 
-.assetsOverview-container>h1 {
+.AssetsOverview-container>h1 {
    position: relative;
    z-index: 8888;
    text-align: center;
-   padding-top: 55px;
+   // padding-top: 55px;
 
    transform: translateY(40px);
    -webkit-transform: translateY(40px);
@@ -19,10 +22,10 @@
 }
 
 @media (min-width: 1366px) {
-   .assetsOverview-subContainer {
+   .AssetsOverview-subContainer {
       display: flex;
       justify-content: space-between;
-      height: 45vh;
+      // height: 45vh;
       margin-top: 80px;
    }
 }

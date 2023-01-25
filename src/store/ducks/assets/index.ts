@@ -49,7 +49,7 @@ const reducer: Reducer<AssetsState> = (state = INITIAL_STATE, action: Action): A
             loading: true 
         }
     case AssetsTypes.LOAD_SUCCESS:
-        // console.log('action ', action.payload?.data);      
+        console.log('action ', action.payload?.data);      
 
         return {
             ...state, 
