@@ -4,6 +4,8 @@ import classes from "./AssetsOverview.module.scss"
 
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 // import AssetsService from '../../services/assetsService'
 import IAssetsData from "models/AssetsModel"
@@ -91,7 +93,6 @@ const AssetsOverview = (props: Props) => {
             },
          },
       },
-
       series: [
          {
             name: "Assets",
@@ -130,6 +131,7 @@ const AssetsOverview = (props: Props) => {
       <div className={classes["assetsOverview-container"]}>
          <h1>ATIVOS</h1>
          <div className={classes["assetsOverview-subContainer"]}>
+         {/* <CircularProgressbar value={66} text={`66%`} />; */}
             <AssetsReport assetsReport={overview} />
             <HighchartsReact highcharts={Highcharts} options={options} />
          </div>

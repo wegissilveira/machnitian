@@ -6,8 +6,7 @@ import IAssetsData, { Icon } from "models/AssetsModel"
 
 type Props = {
    currentAsset: IAssetsData
-   // healthColor: React.CSSProperties
-   healthColor: any
+   healthColor: string
    statusIcon: Icon
    statusInfo: string[]
 }

@@ -1,4 +1,4 @@
-import classes from "./AssetsReport.module.css"
+import classes from "./AssetsReport.module.scss"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
