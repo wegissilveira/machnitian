@@ -6,7 +6,9 @@
    main {
       flex: 1;
       background-color: #171932;
+      padding-bottom: 20px;
       @media (min-width: 1024px) {
+         padding-bottom: unset;
          width: 75%;
          margin-left: 25%;
       }

@@ -10,7 +10,6 @@ import { connect } from "react-redux"
 import IAssetsData from "models/AssetsModel"
 import IUsersData from "models/UsersModel"
 import IUnitsData from "models/UnitsModel"
-import ICompanyData from "models/CompanyModel"
 
 import AssetsOverview from "components/AssetsOverview/AssetsOverview"
 import Overview from "components/Overview/Overview"
@@ -20,7 +19,6 @@ interface StateProps {
    assets: Array<IAssetsData>
    users: Array<IUsersData>
    units: Array<IUnitsData>
-   company: Array<ICompanyData>
 }
 
 interface DispatchProps {
@@ -36,18 +34,35 @@ class GeneralOverview extends Component<Props> {
    }
 
    render() {
-      const { assets, users, units, company } = this.props
-
+      const { assets, users, units } = this.props
+     
+      
       return (
          <div className={classes['Overview-wrapper']}>
             <AssetsOverview assets={assets} />
-            {/* <h1 className={classes["Overview-title"]}>EMPRESA</h1> */}
-            {/* <div className={classes['Overview-sidebar--wrapper']}>
-               <Overview title={"Empresa"} values={company} />
-               <Overview title={"Ativos"} link={"assets-list"} values={assets} />
-               <Overview title={"Unidades"} link={"units-list"} values={units} />
-               <Overview title={"Usuários"} link={"users-list"} values={users} />
-            </div> */}
+            <div className={classes['Overview-subContainer']}>
+               <Overview 
+                  title={"Ativos"} 
+                  link={"assets-list"} 
+                  values={assets} 
+                  icon={'gears'}
+                  color={'orange'}
+               />
+               <Overview 
+                  title={"Unidades"} 
+                  link={"units-list"} 
+                  values={units} 
+                  icon={'server'}
+                  color={'green'}
+               />
+               <Overview 
+                  title={"Usuários"} 
+                  link={"users-list"} 
+                  values={users} 
+                  icon={'user-gear'}
+                  color={'#176aff'}
+               />
+            </div>
             <GeneralInfo />
          </div>
       )
@@ -57,8 +72,7 @@ class GeneralOverview extends Component<Props> {
 const mapStateToProps = (state: ApplicationState) => ({
    assets: state.assets.assets,
    users: state.assets.users,
-   units: state.assets.units,
-   company: state.assets.company,
+   units: state.assets.units
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

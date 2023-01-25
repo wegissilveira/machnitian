@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 
 import classes from "./Overview.module.scss"
 
-import IAssetsData from "models/AssetsModel"
+import IAssetsData, { Icon } from "models/AssetsModel"
 import IUsersData from "models/UsersModel"
 import ICompanyData from "models/CompanyModel"
 import IUnitsData from "models/UnitsModel"
@@ -15,10 +15,18 @@ type Props = {
 	values: IUsersData[] | ICompanyData[] | IUnitsData[] | IAssetsData[]
 	title: string
 	link?: string
+   icon: Icon
+   color: string
 }
 
 const Overview = (props: Props) => {
-	const { values, title, link } = props
+	const { 
+      values, 
+      title, 
+      link,
+      icon,
+      color
+   } = props
 
    const [header, setHeader] = useState<number | string | null>(0)
 	
@@ -35,25 +43,14 @@ const Overview = (props: Props) => {
    }, [values, title])
 
    return (
-      <>
-         {link && (
-            <Link to={`${process.env.PUBLIC_URL}/${link}`}>
-               <div className={classes["Overview-container"]}>
-                  <p>
-                     <span>{title}:</span> {header}
-                  </p>
-                  <FontAwesomeIcon icon={["fas", "eye"]} color="#1e3c8f" />
-               </div>
-            </Link>
-         )}
-         {!link && (
-            <div className={classes["Overview-container"]}>
-               <p>
-                  <span>{title}:</span> {header}
-               </p>
-            </div>
-         )}
-      </>
+      <Link to={`${process.env.PUBLIC_URL}/${link}`}>
+         <div className={classes["Overview-container"]}>
+            <p>
+               <span>{title}:</span> {header}
+            </p>
+            <FontAwesomeIcon icon={["fas", icon]} color={color} />
+         </div>
+      </Link>
    )
 }
 

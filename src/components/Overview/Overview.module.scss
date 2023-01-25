@@ -1,14 +1,16 @@
 .Overview-container {
+   color: #fff;
    margin-top: 20px;
    display: flex;
    justify-content: space-between;
    font-size: 1.2em;
    width: 80%;
-   background-color: rgb(240, 238, 238);
+   background-color: rgba(255, 255, 255, 0.26);
    padding: 3%;
    margin-left: 7%;
    margin-bottom: 10px;
    box-shadow: -3px 4px 10px 1px #aaa;
+   box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
 
    border-radius: 5px;
    -webkit-border-radius: 5px;

@@ -8,6 +8,7 @@ import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
 
 import { RouteComponentProps } from "react-router"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
 
 import IAssetsData, { Icon } from "models/AssetsModel"
 
@@ -16,6 +17,7 @@ import AssetImage from "./AssetContainer/AssetImage/AssetImage"
 import AssetHealth from "./AssetContainer/AssetHealth/AssetHealth"
 import AssetHealthMobile from "./AssetContainer/AssetHealthMobile/AssetHealthMobile"
 import AssetContainer from "./AssetContainer/AssetContainer"
+
 
 
 interface StateProps {

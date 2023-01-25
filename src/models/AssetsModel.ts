@@ -5,6 +5,17 @@ import ICompanyData from "models/CompanyModel"
 
 type SpecificationIconsType = "car-battery" | "temperature-high" | "sync-alt"
 type DetailsIconsType = "cog" | "building" | "charging-station" | "user-cog"
+type AssetsIconType =
+   | "check-circle"
+   | "exclamation-circle"
+   | "times-circle"
+   | "minus-square"
+   | "exclamation-triangle"
+type GeneralInfoIconType = 'gears' | 'server' | 'user-gear'
+
+export type Icon = 
+   | AssetsIconType
+   | GeneralInfoIconType
 
 export type SpecificationKeyDetailsType = {
    icon: SpecificationIconsType
@@ -66,10 +77,3 @@ type LoadFailure = {
 }
 
 export type AssetsActions = LoadRequest | loadSuccess | LoadFailure
-
-export type Icon =
-   | "check-circle"
-   | "exclamation-circle"
-   | "times-circle"
-   | "minus-square"
-   | "exclamation-triangle"

@@ -1,3 +1,46 @@
 .GeneralInfo-wrapper {
-   background-color: #fff;
+   background-color: rgba(255, 255, 255, 0.26);
+   width: 80%;
+   margin: 0 auto;
+   border-radius: 8px;
+   margin-top: 50px;
+   display: none;
+   box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
+   @media (min-width: 1024px) {
+      display: block;
+   }
+   .GeneralInfo-header {
+      border-bottom: 1px solid #ccc;
+      color: #fff;
+      margin-bottom: 0;
+      height: 40px;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+   }
+   .GeneralInfo-container {
+      min-height: 200px;
+      display: flex;
+      justify-content: space-between;
+      .GeneralInfo-subContainer {
+         width: 33%;
+         box-sizing: border-box;
+         padding: 30px 60px;
+         &:not(:last-child) {
+            border-right: 1px solid #ccc;
+         }      
+         svg {
+            margin-bottom: 20px;
+         }   
+         p {
+            color: #fff;
+            &.GeneralInfo-data {
+               font-size: 35px;
+            }
+            &.GeneralInfo-item {
+               font-size: 18px;
+            }
+         }
+      }
+   }
 }

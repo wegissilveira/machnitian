@@ -6,7 +6,6 @@
             - GeneralInfo
             - AssetsOverview 
                - AssetsOverviewCircle
-               - AssetsReport
          - AssetComponent
             - AssetContainer - NEW
                - AssetImage - NEW

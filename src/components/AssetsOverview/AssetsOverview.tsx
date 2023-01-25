@@ -10,7 +10,6 @@ import HighchartsReact from "highcharts-react-official"
 import IAssetsData from "models/AssetsModel"
 import TAssetsReport from "models/AssetsReportModel"
 
-import AssetsReport from "./AssetsReport/AssetsReport"
 import AssetsOverviewCircle from "./AssetsOverviewCircle/AssetsOverviewCircle"
 
 
@@ -60,35 +59,46 @@ const AssetsOverview = (props: Props) => {
          plotBorderWidth: null,
          plotShadow: false,
          type: "pie",
-         backgroundColor: "rgb(245, 245, 245)",
+         backgroundColor: "#171932",
          margin: [0, 0, 0, 0],
          spacingTop: 0,
          spacingBottom: 0,
          spacingLeft: 0,
          spacingRight: 0,
-         selectionMarkerFill: "none",
+         selectionMarkerFill: "none"
+      },
+      subtitle: {
+         style: {
+            color: '#fff'
+         }
       },
       title: {
          text: `Total: ${overview.totalAssets}`,
-         y: window.screen.width >= 1366 ? 20 : 200,
+         y: 200,
          style: {
             fontWeight: 900,
+            color: '#fff'
          },
       },
       legend: {
          enabled: true,
+         itemStyle: {
+            color: '#fff',
+            fontWeight: '100'
+         }
       },
       plotOptions: {
          pie: {
             size: "70%",
             allowPointSelect: false,
             cursor: "pointer",
-            showInLegend: window.screen.width >= 1366 ? false : true,
+            showInLegend: true,
             dataLabels: {
-               enabled: window.screen.width >= 1366 ? true : false,
+               enabled: false,
                style: {
                   fontWeight: 500,
                   fontSize: 20 + "px",
+                  color: '#fff'
                },
             },
          },
@@ -124,12 +134,12 @@ const AssetsOverview = (props: Props) => {
                },
             },
          },
-      ],
+      ]
    }
 
    return (
       <div className={classes["AssetsOverview-container"]}>
-         <h1>ATIVOS</h1>
+         <h1>STATUS DOS ATIVOS</h1>
          <div className={classes["AssetsOverview-subContainer"]}>
             <AssetsOverviewCircle 
                text={'Funcionando'}
@@ -146,8 +156,9 @@ const AssetsOverview = (props: Props) => {
                color={'red'}
                value={(overview.assetsInDowntime / overview.totalAssets) * 100}
             />
-            {/* <AssetsReport assetsReport={overview} /> */}
-            {/* <HighchartsReact highcharts={Highcharts} options={options} /> */}
+         </div>
+         <div className={classes["AssetsOverview-subContainer--mobile"]}>
+            <HighchartsReact highcharts={Highcharts} options={options} />
          </div>
       </div>
    )
