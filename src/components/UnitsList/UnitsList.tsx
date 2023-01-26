@@ -43,7 +43,7 @@ const UnitsList = (props: Props) => {
 
    useEffect(() => {
       const ItemsListDetails = {
-         title: 'LISTA DE USUÁRIOS',
+         title: 'LISTA DE Unidades',
          header: ["Id", "Nome"],
          values: unitsTableValue,
       }
