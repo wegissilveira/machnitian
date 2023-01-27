@@ -1,3 +1,5 @@
+import classes from './AssetDetails.module.scss'
+
 import IAssetsData, { DetailsKeyType } from "models/AssetsModel"
 import Details from "./Details/Details"
 
@@ -22,7 +24,7 @@ const AssetDetails = (props: Props) => {
    } = props
   
    return (
-      <div>
+      <div className={classes['Asset-details-wrapper']}>
          <h3>Detalhes</h3>
          <Details 
             currentAsset={currentAsset}

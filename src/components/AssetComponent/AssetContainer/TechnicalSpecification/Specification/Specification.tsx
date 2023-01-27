@@ -31,7 +31,7 @@ const Specification = (props: Props) => {
             specificationDetails.map((specification) => {
                return (
                   <div key={specification.name}>
-                     <FontAwesomeIcon icon={["fas", specification.icon]} color={colors[0]} />
+                     <FontAwesomeIcon icon={["fas", specification.icon]} color={'orange'} />
                      <p>
                         <span>{specification.name}:</span>{" "} 
                         { buildSpecificationValue(currentAsset, specification) }

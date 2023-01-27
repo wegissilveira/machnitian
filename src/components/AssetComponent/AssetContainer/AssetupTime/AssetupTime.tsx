@@ -15,7 +15,7 @@ const AssetUpTime = (props: Props) => {
 
    return (
       <div className={classes["Asset-uptime"]}>
-         <FontAwesomeIcon icon={["far", "clock"]} color={colors[0]} />
+         <FontAwesomeIcon icon={["far", "clock"]} color={'orange'} />
          <p>
             <span>Tempo ligado:</span>{" "}
             {Object.keys(currentAsset).length > 0 && currentAsset?.metrics.totalUptime?.toFixed()} horas

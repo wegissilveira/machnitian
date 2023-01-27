@@ -1,3 +1,5 @@
+import classes from './TechnicalSpecification.module.scss'
+
 import IAssetsData, { SpecificationKeyDetailsType } from "models/AssetsModel"
 import Specification from "./Specification/Specification"
 
@@ -21,7 +23,7 @@ const TechnicalSpecification = (props: Props) => {
 
 
    return (
-      <div>
+      <div className={classes["Asset-specification-wrapper"]}>
          <h3>Especificações Técnicas</h3>
          <Specification 
             currentAsset={currentAsset}

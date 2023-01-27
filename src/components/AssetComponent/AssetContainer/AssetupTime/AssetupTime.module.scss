@@ -1,12 +1,10 @@
 .Asset-uptime {
    display: flex;
    justify-content: flex-start;
-}
-
-.Asset-uptime>svg {
-   font-size: 1.5em;
-}
-
-.Asset-uptime>p {
-   margin-left: 10px;
+   & > svg {
+      font-size: 1.5em;
+   }
+   & > p {
+      margin-left: 10px;
+   }
 }

@@ -51,7 +51,7 @@ const Details = (props: Props) => {
             details.map((detail) => {
                return (
                   <div key={detail.name}>
-                     <FontAwesomeIcon icon={["fas", detail.icon]} color={colors[0]} />
+                     <FontAwesomeIcon icon={["fas", detail.icon]} color={'orange'} />
                      <p>
                         <span>{detail.name}: </span> 
                         { buildDetailValue(currentAsset, detail) }
