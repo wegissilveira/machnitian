@@ -14,39 +14,12 @@ button {
 }
 
 @media (min-width: 768px) {
-   .asset-container {
+   .Asset-container {
       display: grid;
-      grid-template-columns: repeat(2, 50%);
+      grid-template-columns: repeat(2, minmax( 0, 50%));
+      grid-gap: 0 50px;
       padding-top: 8%;
-   }
-}
-
-.Asset-healthInfo--container {
-   display: none;
-}
-
-@media (min-width: 768px) {
-   .Asset-healthInfo--container {
-      margin-left: 5%;
-      margin-right: 10%;
-      height: 45vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-evenly;
-      background-color: #fff;
-      box-shadow: -3px 4px 10px 1px #aaa;
-
-      border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
-   }
-}
-
-@media (min-width: 1366px) {
-   .Asset-healthInfo--container {
-      flex-direction: row;
+      width: 90%;
+      margin: 0 auto;
    }
 }

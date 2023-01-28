@@ -1,10 +1,10 @@
-.assetImg-container {
+.AssetImg-container {
    max-height: 45vh;
    overflow: hidden;
 }
 
 @media (min-width: 768px) {
-   .assetImg-container {
+   .AssetImg-container {
       border-radius: 5px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
@@ -13,13 +13,13 @@
    }
 }
 
-.assetImg-container>img {
+.AssetImg-container>img {
    max-width: 100%;
 }
 
 @media (min-width: 768px) {
-   .assetImg-container>img {
-      margin-left: 10%;
+   .AssetImg-container>img {
+      // margin-left: 10%;
       box-shadow: -3px 4px 10px 1px #aaa;
 
       border-radius: 5px;

@@ -4,15 +4,12 @@
 
 @media (min-width: 768px) {
    .Asset-healthInfo--container {
-      margin-left: 5%;
-      margin-right: 10%;
-      height: 45vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
       background-color: #fff;
-      box-shadow: -3px 4px 10px 1px #aaa;
+      box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
 
       border-radius: 5px;
       -webkit-border-radius: 5px;
@@ -65,11 +62,11 @@
    }
 
    .Health-notation svg {
-      transform: translate(-100%, -25%);
-      -webkit-transform: translate(-100%, -25%);
-      -moz-transform: translate(-100%, -25%);
-      -ms-transform: translate(-100%, -25%);
-      -o-transform: translate(-100%, -25%);
+      // transform: translate(-100%, -25%);
+      // -webkit-transform: translate(-100%, -25%);
+      // -moz-transform: translate(-100%, -25%);
+      // -ms-transform: translate(-100%, -25%);
+      // -o-transform: translate(-100%, -25%);
    }
 }
 
@@ -79,44 +76,52 @@
    }
 }
 
-.Health-notation--circle>p {
-   position: absolute;
-   left: 50%;
-   bottom: 50%;
-   font-weight: bold;
+.Health-notation--circle {
    font-size: 1.5em;
-
-   transform: translate(-50%, 50%);
-   -webkit-transform: translate(-50%, 50%);
-   -moz-transform: translate(-50%, 50%);
-   -ms-transform: translate(-50%, 50%);
-   -o-transform: translate(-50%, 50%);
+   font-weight: bold;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   // &:after {
+   //    content: url('../../../../assets/images/medical-alt.svg');
+   //    width: 36px;
+   //    position: absolute;
+   //    bottom: -35px;
+   //    left: -10px;
+   // }
+   svg {
+      position: absolute;
+      bottom: -35px;
+      left: -20px;
+      width: 42px;
+   }
 }
 
 .Health-notation svg {
-   transform: translate(-25%, -60%);
-   -webkit-transform: translate(-25%, -60%);
-   -moz-transform: translate(-25%, -60%);
-   -ms-transform: translate(-25%, -60%);
-   -o-transform: translate(-25%, -60%);
+   // transform: translate(-25%, -60%);
+   // -webkit-transform: translate(-25%, -60%);
+   // -moz-transform: translate(-25%, -60%);
+   // -ms-transform: translate(-25%, -60%);
+   // -o-transform: translate(-25%, -60%);
 }
 
 @media (min-width: 768px) {
    .Health-notation svg {
-      transform: translate(-100%, -25%);
-      -webkit-transform: translate(-100%, -25%);
-      -moz-transform: translate(-100%, -25%);
-      -ms-transform: translate(-100%, -25%);
-      -o-transform: translate(-100%, -25%);
+      // transform: translate(-100%, -25%);
+      // -webkit-transform: translate(-100%, -25%);
+      // -moz-transform: translate(-100%, -25%);
+      // -ms-transform: translate(-100%, -25%);
+      // -o-transform: translate(-100%, -25%);
    }
 }
 
 .Asset-HealthScore {
    margin-top: -50%;
 
-   transform: translateX(-20%);
-   -webkit-transform: translateX(-20%);
-   -moz-transform: translateX(-20%);
-   -ms-transform: translateX(-20%);
-   -o-transform: translateX(-20%);
+   // transform: translateX(-20%);
+   // -webkit-transform: translateX(-20%);
+   // -moz-transform: translateX(-20%);
+   // -ms-transform: translateX(-20%);
+   // -o-transform: translateX(-20%);
 }

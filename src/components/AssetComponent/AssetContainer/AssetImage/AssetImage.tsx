@@ -10,7 +10,7 @@ const AssetImage = (props: Props) => {
    const { currentAsset } = props
 
    return (
-      <div className={classes["assetImg-container"]}>
+      <div className={classes["AssetImg-container"]}>
          <img src={currentAsset?.image} alt={currentAsset?.name} />
       </div>
    )

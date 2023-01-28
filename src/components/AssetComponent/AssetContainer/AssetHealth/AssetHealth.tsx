@@ -28,13 +28,19 @@ const AssetHealth = (props: Props) => {
          >
             <h2>Saúde da máquina</h2>
             <div className={classes["Health-notation--circle"]}>
-               <p>{currentAsset?.healthscore}%</p>
+               {/* <p>{currentAsset?.healthscore}%</p> */}
+               {currentAsset?.healthscore}%
+               <FontAwesomeIcon
+                  className={classes["Asset-HealthScore"]}
+                  icon={["fas", "file-medical-alt"]}
+                  size="3x"
+               />
             </div>
-            <FontAwesomeIcon
+            {/* <FontAwesomeIcon
                className={classes["Asset-HealthScore"]}
                icon={["fas", "file-medical-alt"]}
                size="3x"
-            />
+            /> */}
          </div>
          <div className={classes["Status-notation"]}>
             <h2>Status da máquina</h2>

@@ -113,7 +113,7 @@ const AssetComponent = (props: Props) => {
 
 
    return (
-      <div className={classes["asset-container"]}>
+      <div className={classes["Asset-container"]}>
          {isModalOpen && <SelectAgent modalHandler={openModal} asset={currentAsset?.name} />}
          <AssetImage currentAsset={currentAsset} />
          <AssetHealthMobile 
