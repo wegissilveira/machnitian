@@ -1,31 +1,24 @@
 .AssetImg-container {
    max-height: 45vh;
    overflow: hidden;
-}
-
-@media (min-width: 768px) {
-   .AssetImg-container {
+   @media (min-width: 768px) {
       border-radius: 5px;
       -webkit-border-radius: 5px;
       -moz-border-radius: 5px;
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
+      box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
    }
-}
+   & > img {
+      max-width: 100%;
+      @media (min-width: 768px) {
+         box-shadow: -3px 4px 10px 1px #aaa;
 
-.AssetImg-container>img {
-   max-width: 100%;
-}
-
-@media (min-width: 768px) {
-   .AssetImg-container>img {
-      // margin-left: 10%;
-      box-shadow: -3px 4px 10px 1px #aaa;
-
-      border-radius: 5px;
-      -webkit-border-radius: 5px;
-      -moz-border-radius: 5px;
-      -ms-border-radius: 5px;
-      -o-border-radius: 5px;
+         border-radius: 5px;
+         -webkit-border-radius: 5px;
+         -moz-border-radius: 5px;
+         -ms-border-radius: 5px;
+         -o-border-radius: 5px;
+      }
    }
 }

@@ -17,9 +17,24 @@ button {
    .Asset-container {
       display: grid;
       grid-template-columns: repeat(2, minmax( 0, 50%));
+      grid-template-rows: 0.8fr 1.2fr 1fr;
       grid-gap: 0 50px;
+      grid-template-areas:
+      ". ."
+      ". ."
+      "Asset-health--chart Asset-health--chart";
+      
+
       padding-top: 8%;
       width: 90%;
       margin: 0 auto;
+      .Asset-health--chart { 
+         grid-area: Asset-health--chart; 
+         box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
+         :global(.highcharts-container) {
+            border-radius: 5px;
+         }
+      }
    }
 }
+ 

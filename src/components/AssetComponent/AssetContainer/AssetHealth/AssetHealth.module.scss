@@ -1,15 +1,13 @@
 .Asset-healthInfo--container {
    display: none;
-}
-
-@media (min-width: 768px) {
-   .Asset-healthInfo--container {
+   @media (min-width: 768px) {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-evenly;
       background-color: #fff;
       box-shadow: 4px 5px 9px -2px rgb(0 0 0 / 46%);
+      height: 460px;
 
       border-radius: 5px;
       -webkit-border-radius: 5px;
@@ -17,111 +15,71 @@
       -ms-border-radius: 5px;
       -o-border-radius: 5px;
    }
-}
-
-@media (min-width: 1366px) {
-   .Asset-healthInfo--container {
+   @media (min-width: 1366px) {
       flex-direction: row;
+      background-color: rgba(255, 255, 255, 0.26);
+      padding: 10px;
+      height: unset;
    }
-}
-
-.Health-notation {
-   width: fit-content;
-}
-
-.Health-notation--circle {
-   position: relative;
-   width: 90px;
-   height: 90px;
-   border: 6px solid;
-   background-color: rgba(204, 204, 204, 0.74);
-
-   border-radius: 50%;
-   -webkit-border-radius: 50%;
-   -moz-border-radius: 50%;
-   -ms-border-radius: 50%;
-   -o-border-radius: 50%;
-}
-
-@media (min-width: 768px) {
-   .Health-notation {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
-      height: 40%;
-   }
-
-   .Health-notation>h2 {
-      color: rgb(105, 103, 103);
-   }
-
-   .Health-notation--circle {
-      margin-top: -30%;
-      background-color: transparent;
-   }
-
-   .Health-notation svg {
-      // transform: translate(-100%, -25%);
-      // -webkit-transform: translate(-100%, -25%);
-      // -moz-transform: translate(-100%, -25%);
-      // -ms-transform: translate(-100%, -25%);
-      // -o-transform: translate(-100%, -25%);
-   }
-}
-
-@media (min-width: 1366px) {
-   .Health-notation {
-      height: 70%;
-   }
-}
-
-.Health-notation--circle {
-   font-size: 1.5em;
-   font-weight: bold;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   position: relative;
-   // &:after {
-   //    content: url('../../../../assets/images/medical-alt.svg');
-   //    width: 36px;
-   //    position: absolute;
-   //    bottom: -35px;
-   //    left: -10px;
-   // }
-   svg {
-      position: absolute;
-      bottom: -35px;
-      left: -20px;
-      width: 42px;
-   }
-}
-
-.Health-notation svg {
-   // transform: translate(-25%, -60%);
-   // -webkit-transform: translate(-25%, -60%);
-   // -moz-transform: translate(-25%, -60%);
-   // -ms-transform: translate(-25%, -60%);
-   // -o-transform: translate(-25%, -60%);
-}
-
-@media (min-width: 768px) {
-   .Health-notation svg {
-      // transform: translate(-100%, -25%);
-      // -webkit-transform: translate(-100%, -25%);
-      // -moz-transform: translate(-100%, -25%);
-      // -ms-transform: translate(-100%, -25%);
-      // -o-transform: translate(-100%, -25%);
-   }
-}
-
-.Asset-HealthScore {
-   margin-top: -50%;
-
-   // transform: translateX(-20%);
-   // -webkit-transform: translateX(-20%);
-   // -moz-transform: translateX(-20%);
-   // -ms-transform: translateX(-20%);
-   // -o-transform: translateX(-20%);
+   & > div {
+      @media (min-width: 768px) {
+         padding: 20px 0 30px 0;
+         box-sizing: border-box;
+         height: 100%;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-between;
+         align-items: center;
+         &:first-of-type {
+            padding-bottom: 45px;
+         }
+      }
+      @media (min-width: 1366px) {
+         padding: 40px 0 50px 0;
+      }
+      &.Health-notation {
+         width: fit-content;
+         & > h2 {
+            color: #fff;
+            font-size: 21px;
+         }
+         .Health-notation--circle {
+            position: relative;
+            width: 90px;
+            height: 90px;
+            border: 6px solid;
+            background-color: rgba(204, 204, 204, 0.74);
+            font-size: 1.5em;
+            font-weight: bold;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+         
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -moz-border-radius: 50%;
+            -ms-border-radius: 50%;
+            -o-border-radius: 50%;
+   
+            @media (min-width: 768px) {
+               margin-top: -30%;         
+            }
+            svg {
+               position: absolute;
+               bottom: -35px;
+               left: -20px;
+               width: 42px;
+            }
+         }
+      }
+      &.Status-notation {
+         & > h2, h3 {
+            color: #fff;
+         }
+         & > h2 {
+            font-size: 21px;
+         }
+      }
+   }   
 }
