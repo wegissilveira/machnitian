@@ -6,6 +6,7 @@ import * as AssetsActions from "store/ducks/assets/actions"
 import { ApplicationState } from "store"
 import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
+import moment from 'moment'
 
 import { RouteComponentProps } from "react-router"
 import Highcharts from "highcharts"
@@ -34,6 +35,22 @@ type TParams = { id: string }
 interface MyComponent extends RouteComponentProps<TParams> {}
 
 type Props = StateProps & DispatchProps & MyComponent
+
+type StatusRate = {
+   inOperation: number
+   inAlert: number
+   plannedStop: number
+   inDowntime: number
+   unplannedStop: number
+}
+
+const statusRate: StatusRate = {
+   inOperation: 5,
+   inAlert: 4,
+   plannedStop: 3,
+   inDowntime: 2,
+   unplannedStop: 1
+}
 
 const AssetComponent = (props: Props) => {
    const {
@@ -103,7 +120,7 @@ const AssetComponent = (props: Props) => {
    }, [colors, currentAsset?.healthscore])
 
    useEffect(() => {
-      loadRequest()
+      loadRequest()    
    }, [props])
 
    useEffect(() => {
@@ -117,19 +134,14 @@ const AssetComponent = (props: Props) => {
          type: 'line'
        },
        title: {
-         text: 'Monthly Average Temperature'
-       },
-       subtitle: {
-         text: 'Source: ' +
-           '<a href="https://en.wikipedia.org/wiki/List_of_cities_by_average_temperature" ' +
-           'target="_blank">Wikipedia.com</a>'
+         text: 'Histórico de Saúde do Ativo'
        },
        xAxis: {
-         categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+         categories: currentAsset.healthHistory && currentAsset.healthHistory.map(date => moment(date.timestamp).utc().format('DD/MM/YY'))
        },
        yAxis: {
          title: {
-           text: 'Temperature (°C)'
+           text: 'Status'
          }
        },
        plotOptions: {
@@ -140,16 +152,11 @@ const AssetComponent = (props: Props) => {
            enableMouseTracking: false
          }
        },
-       series: [{
-         name: 'Reggane',
-         data: [16.0, 18.2, 23.1, 27.9, 32.2, 36.4, 39.8, 38.4, 35.5, 29.2,
-           22.0, 17.8]
-       }
-      //  , {
-      //    name: 'Tallinn',
-      //    data: [-2.9, -3.6, -0.6, 4.8, 10.2, 14.5, 17.6, 16.5, 12.0, 6.5,
-      //      2.0, -0.9]
-      //  }
+       series: [
+         {
+            name: currentAsset.name,
+            data: currentAsset.healthHistory && currentAsset.healthHistory.map(item => statusRate[item.status as keyof StatusRate])
+         }
       ]
    }
 

@@ -45,3 +45,4 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - [Axios](https://axios-http.com/docs/intro) - A a promise-based HTTP Client for node.js and the browser.
 - [Font Awesome](https://fontawesome.com/v5/docs/web/use-with/react) - Font Awesome is the Internet's icon library and toolkit, used by millions of designers, developers, and content creators.
 - [React Circular Progressbar](https://www.npmjs.com/package/react-circular-progressbar) - A circular progressbar component, built with SVG and extensively customizable.
+- [Moment.js](https://momentjs.com/) - Parse, validate, manipulate and display dates and times in JavaScript.

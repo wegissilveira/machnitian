@@ -36,6 +36,11 @@ export type DetailsKeyType = {
    key: keyof IAssetsData
 }
 
+type HealthHistory = {
+   status: string
+   timestamp: string
+}
+
 export default interface IAssetsData {
    id: number
    name: string
@@ -49,6 +54,7 @@ export default interface IAssetsData {
    }
    sensors: string[]
    companyId: number
+   healthHistory: HealthHistory[]
    unitId: number
    healthscore: number
    status: string
