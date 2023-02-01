@@ -6,7 +6,7 @@ type Props = {
    currentAsset: IAssetsData
    colors: string[]
    details: DetailsKeyType[]
-   openModal: () => void
+   // openModal: () => void
 }
 
 const capitalize = (str: string) => {      
@@ -28,7 +28,7 @@ const Details = (props: Props) => {
       currentAsset,
       colors,
       details,
-      openModal
+      // openModal
    } = props
 
    const buildDetailValue = (currentAsset: IAssetsData, detail: DetailsKeyType) => {
@@ -40,7 +40,8 @@ const Details = (props: Props) => {
          }         
       } else {
          if (detail.key === 'agent') {
-            return <button onClick={openModal}>Selecione</button>
+            // return <button onClick={openModal}>Selecione</button>
+            return 'N/A'
          }
       }
    }

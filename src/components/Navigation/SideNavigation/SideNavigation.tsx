@@ -9,7 +9,7 @@ const SideNavigation = () => {
          <ul className={classes["SideNavigation--navigation-items"]}>
             <h1>LOGO</h1>
             <li><NavLink to={`${process.env.PUBLIC_URL}/`} exact>Overview</NavLink></li>
-            <li><NavLink to={`${process.env.PUBLIC_URL}/assets-list` } exact>Ativos</NavLink></li>
+            <li><NavLink to={`${process.env.PUBLIC_URL}/assets-list` } >Ativos</NavLink></li>
             <li><NavLink to={`${process.env.PUBLIC_URL}/users-list`} exact>Usuários</NavLink></li>
             <li><NavLink to={`${process.env.PUBLIC_URL}/units-list`} exact>Unidades</NavLink></li>
          </ul>

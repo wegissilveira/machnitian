@@ -6,7 +6,7 @@ import Details from "./Details/Details"
 type Props = {
    currentAsset: IAssetsData
    colors: string[]
-   openModal: () => void
+   // openModal: () => void
 }
 
 const details: DetailsKeyType[] = [
@@ -20,7 +20,7 @@ const AssetDetails = (props: Props) => {
    const { 
       currentAsset, 
       colors,
-      openModal
+      // openModal
    } = props
   
    return (
@@ -30,7 +30,7 @@ const AssetDetails = (props: Props) => {
             currentAsset={currentAsset}
             colors={colors}
             details={details}
-            openModal={openModal}
+            // openModal={openModal}
          />
       </div>
    )

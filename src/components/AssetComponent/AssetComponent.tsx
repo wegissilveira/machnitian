@@ -14,7 +14,7 @@ import HighchartsReact from "highcharts-react-official"
 
 import IAssetsData, { Icon } from "models/AssetsModel"
 
-import SelectAgent from "./SelectAgent/SelectAgent"
+// import SelectAgent from "./SelectAgent/SelectAgent"
 import AssetImage from "./AssetContainer/AssetImage/AssetImage"
 import AssetHealth from "./AssetContainer/AssetHealth/AssetHealth"
 import AssetHealthMobile from "./AssetContainer/AssetHealthMobile/AssetHealthMobile"
@@ -73,17 +73,17 @@ const AssetComponent = (props: Props) => {
       "Funcionando",
    ])
    const [healthColor, setHealthColor] = useState<string>(colors[3])
-   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+   // const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-   const openModal = (): void => {
-      if (isModalOpen) {
-         setIsModalOpen(false)
-         document.body.style.overflow = "scroll"
-      } else {
-         setIsModalOpen(true)
-         document.body.style.overflow = "hidden"
-      }
-   }
+   // const openModal = (): void => {
+   //    if (isModalOpen) {
+   //       setIsModalOpen(false)
+   //       document.body.style.overflow = "scroll"
+   //    } else {
+   //       setIsModalOpen(true)
+   //       document.body.style.overflow = "hidden"
+   //    }
+   // }
 
    useEffect(() => {
       let currentStatus = []
@@ -163,7 +163,7 @@ const AssetComponent = (props: Props) => {
 
    return (
       <div className={classes["Asset-container"]}>
-         {isModalOpen && <SelectAgent modalHandler={openModal} asset={currentAsset?.name} />}
+         {/* {isModalOpen && <SelectAgent modalHandler={openModal} asset={currentAsset?.name} />} */}
          <AssetImage currentAsset={currentAsset} />
          <AssetHealthMobile 
             currentAsset={currentAsset} 
@@ -180,7 +180,7 @@ const AssetComponent = (props: Props) => {
          <AssetContainer 
             currentAsset={currentAsset}
             colors={colors}
-            openModal={openModal}
+            // openModal={openModal}
          />
          <div className={classes["Asset-health--chart"]}>
             <HighchartsReact highcharts={Highcharts} options={options} />

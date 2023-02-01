@@ -1,5 +1,5 @@
 import classes from "./ItemsList.module.scss"
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 
 
 type itemsBaseType = {
@@ -46,7 +46,7 @@ const ItemsList = <T extends itemsBaseType>(props: Props<T>) => {
                      return (
                         key !== 'link' &&
                            <td key={key} >
-                              {(item).hasOwnProperty('link') ? <Link to={`${process.env.PUBLIC_URL}/asset/${item.id}`}>{item[k]}</Link> : item[k] }
+                              {(item).hasOwnProperty('link') ? <NavLink to={`${process.env.PUBLIC_URL}/assets-list/asset/${item.id}`} >{item[k]}</NavLink> : item[k] }
                            </td>
                      )
                   })

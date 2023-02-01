@@ -9,14 +9,14 @@ import AssetUpTime from './AssetupTime/AssetupTime'
 type Props = {
    currentAsset: IAssetsData
    colors: string[]
-   openModal: () => void
+   // openModal: () => void
 }
 
 const AssetContainer = (props: Props) => {
    const {
       currentAsset,
       colors,
-      openModal
+      // openModal
    } = props
 
    return (
@@ -29,7 +29,7 @@ const AssetContainer = (props: Props) => {
          <AssetDetails 
             currentAsset={currentAsset}
             colors={colors}
-            openModal={openModal}
+            // openModal={openModal}
          />
          <TechnicalSpecification 
             currentAsset={currentAsset}
