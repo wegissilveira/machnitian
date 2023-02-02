@@ -1,25 +1,25 @@
 import classes from './AssetHealth.module.scss'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import IAssetsData, { Icon } from "models/AssetsModel"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
+import IAssetsData from "models/AssetsModel"
 
 
 type Props = {
    currentAsset: IAssetsData
    healthColor: string
-   statusIcon: Icon
-   statusInfo: string[]
+   statusInfo: [string, string, IconName]
 }
 
 const AssetHealth = (props: Props) => {
    const { 
       currentAsset, 
       healthColor, 
-      statusIcon, 
       statusInfo 
    } = props
 
-
+   if (statusInfo.length < 1) return <></>
+   
    return (
       <div className={classes["Asset-healthInfo--container"]}>
          <div
@@ -39,7 +39,7 @@ const AssetHealth = (props: Props) => {
             <h2>Status da máquina</h2>
             <div>
                <FontAwesomeIcon
-                  icon={["fas", statusIcon]}
+                  icon={["fas", statusInfo[2]]}
                   size="5x"
                   color={statusInfo[0]}
                />

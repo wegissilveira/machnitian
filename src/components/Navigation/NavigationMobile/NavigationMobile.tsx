@@ -4,6 +4,7 @@ import classes from "./NavigationMobile.module.scss"
 
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import LogoIcon from "components/ui/Logo"
 
 const NavigationMobile = () => {
    const [translateMenuValue, setTranslateMenuValue] = useState(-100)
@@ -24,15 +25,15 @@ const NavigationMobile = () => {
    return (
       <div className={classes["NavigationMobile-container"]}>
          <Link to={`${process.env.PUBLIC_URL}/`}>
-            <img src={require("logo/logo.png").default} alt="TRACTIAN" />
+            <LogoIcon />
          </Link>
          <FontAwesomeIcon icon="bars" size="2x" onClick={mobileMenuHandler} />
          <div
             style={translateMenu}
             className={classes["NavigationMobile-subContainer"]}
             onClick={mobileMenuHandler}
-         >
-            <img src={require("../../../logo/logo.png").default} alt="TRACTIAN" />
+         >            
+            <LogoIcon />
             <FontAwesomeIcon icon="times" size="2x" />
             <div className={classes["NavigationMobile-links"]}>
                <Link to={`${process.env.PUBLIC_URL}/`}>Overview</Link>

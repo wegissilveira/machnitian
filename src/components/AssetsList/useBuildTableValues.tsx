@@ -1,10 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import IAssetsData, { Icon } from "models/AssetsModel"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
+import IAssetsData from "models/AssetsModel"
 
 const useBuildTableValues = () => {
    const buildTableValues = (assets: IAssetsData[]) => {
       const assetsTableValue = assets.map((asset) => {
-         let icon: Icon
+         let icon: IconName
          let iconColor: string
          switch(asset.status) {
             case 'inOperation':

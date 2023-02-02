@@ -1,13 +1,14 @@
 import classes from "./SideNavigation.module.scss"
 import { NavLink } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import LogoIcon from "components/ui/Logo"
 
 
 const SideNavigation = () => {
    return (
       <div className={classes["SideNavigation--wrapper"]}>
          <ul className={classes["SideNavigation--navigation-items"]}>
-            <h1>LOGO</h1>
+            <LogoIcon />
             <li><NavLink to={`${process.env.PUBLIC_URL}/`} exact>Overview</NavLink></li>
             <li><NavLink to={`${process.env.PUBLIC_URL}/assets-list` } >Ativos</NavLink></li>
             <li><NavLink to={`${process.env.PUBLIC_URL}/users-list`} exact>Usuários</NavLink></li>

@@ -1,24 +1,24 @@
 import classes from './AssetHealthMobile.module.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import IAssetsData, { Icon } from "models/AssetsModel"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
+import IAssetsData from "models/AssetsModel"
 
 
 type Props = {
    currentAsset: IAssetsData
    healthColor: string
-   statusIcon: Icon
-   statusInfo: string[]
+   statusInfo: [string, string, IconName]
 }
 
 const AssetHealthMobile = (props: Props) => {
    const { 
       currentAsset, 
-      healthColor, 
-      statusIcon, 
+      healthColor,
       statusInfo 
    } = props
 
-
+   if (statusInfo.length < 1) return <></>
+   
    return (
       <div className={classes["Asset-mainIcons"]}>
          <div
@@ -36,7 +36,7 @@ const AssetHealthMobile = (props: Props) => {
          </div>
          <div className={classes["Status-notation"]}>
             <FontAwesomeIcon
-               icon={["fas", statusIcon]}
+               icon={["fas", statusInfo[2]]}
                size="3x"
                color={statusInfo[0]}
             />

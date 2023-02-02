@@ -22,7 +22,7 @@ library.add(fas, far)
 const  App = () =>  {
   return (
     <Provider store={store}>
-      <HashRouter>
+      <BrowserRouter>
         <Layout>
           <Switch>
             <Route path={`${process.env.PUBLIC_URL}/`} exact component={GeneralOverview} />
@@ -35,7 +35,7 @@ const  App = () =>  {
             <Route path={`${process.env.PUBLIC_URL}/units-list/`} exact component={UnitsList} />
           </Switch>
         </Layout>
-      </HashRouter>
+      </BrowserRouter>
     </Provider>
   );
 }

@@ -12,7 +12,8 @@ import { RouteComponentProps } from "react-router"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
-import IAssetsData, { Icon } from "models/AssetsModel"
+import IAssetsData from "models/AssetsModel"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
 
 // import SelectAgent from "./SelectAgent/SelectAgent"
 import AssetImage from "./AssetContainer/AssetImage/AssetImage"
@@ -52,6 +53,12 @@ const statusRate: StatusRate = {
    unplannedStop: 1
 }
 
+type StatusInfo = [string, string, IconName]
+
+const setStatusArr = (color: string, status: string, icon: IconName): StatusInfo => {
+   return [color, status, icon]
+}
+
 const AssetComponent = (props: Props) => {
    const {
       assets,
@@ -67,11 +74,8 @@ const AssetComponent = (props: Props) => {
       "green",
       "rgb(255, 94, 0)",
    ])
-   const [statusIcon, setStatusIcon] = useState<Icon>("check-circle")
-   const [statusInfo, setStatusInfo] = useState<string[]>([
-      colors[0],
-      "Funcionando",
-   ])
+   const [statusInfo, setStatusInfo] = useState<StatusInfo>([] as unknown as StatusInfo)
+
    const [healthColor, setHealthColor] = useState<string>(colors[3])
    // const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
@@ -86,26 +90,21 @@ const AssetComponent = (props: Props) => {
    // }
 
    useEffect(() => {
-      let currentStatus = []
-      let currentStatusIcon = statusIcon
+      let currentStatus = setStatusArr(colors[0], "Funcionando", "check-circle")
 
-      if (currentAsset?.status === "inOperation") {
-         currentStatusIcon = "check-circle"
-         currentStatus[0] = colors[0]
-         currentStatus[1] = "Funcionando"
-      } else if (currentAsset?.status === "inAlert") {
-         currentStatusIcon = "exclamation-triangle"
-         currentStatus[0] = colors[1]
-         currentStatus[1] = "Em alerta"
-      } else if (currentAsset?.status === "inDowntime") {
-         currentStatusIcon = "minus-square"
-         currentStatus[0] = colors[2]
-         currentStatus[1] = "Parada"
+      switch (currentAsset?.status) {
+         case 'inAlert':
+            currentStatus = setStatusArr(colors[1], "Em alerta", "exclamation-triangle")
+            break
+         case 'inDowntime':
+            currentStatus = setStatusArr(colors[2], "Parada", "minus-square")
+            break
+         default:
+            currentStatus = currentStatus
       }
 
-      setStatusIcon(currentStatusIcon)
       setStatusInfo(currentStatus)
-   }, [currentAsset?.status, colors, statusIcon])
+   }, [currentAsset?.status, colors])
 
    useEffect(() => {
       if (currentAsset?.healthscore) {
@@ -117,7 +116,7 @@ const AssetComponent = (props: Props) => {
             setHealthColor(colors[2])
          }
       }
-   }, [colors, currentAsset?.healthscore])
+   }, [colors, currentAsset?.healthscore, JSON.stringify(statusInfo)])
 
    useEffect(() => {
       loadRequest()    
@@ -168,13 +167,11 @@ const AssetComponent = (props: Props) => {
          <AssetHealthMobile 
             currentAsset={currentAsset} 
             healthColor={healthColor}
-            statusIcon={statusIcon}
             statusInfo={statusInfo}
          />
          <AssetHealth 
             currentAsset={currentAsset} 
             healthColor={healthColor}
-            statusIcon={statusIcon}
             statusInfo={statusInfo}
          />
          <AssetContainer 

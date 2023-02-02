@@ -2,23 +2,10 @@ import { AssetsTypes } from "store/ducks/assets/types"
 import IUsersData from "models/UsersModel"
 import IUnitsData from "models/UnitsModel"
 import ICompanyData from "models/CompanyModel"
-
-type SpecificationIconsType = "car-battery" | "temperature-high" | "sync-alt"
-type DetailsIconsType = "cog" | "building" | "charging-station" | "user-cog"
-type AssetsIconType =
-   | "check-circle"
-   | "exclamation-circle"
-   | "times-circle"
-   | "minus-square"
-   | "exclamation-triangle"
-type GeneralInfoIconType = 'gears' | 'server' | 'user-gear'
-
-export type Icon = 
-   | AssetsIconType
-   | GeneralInfoIconType
+import { IconName } from "@fortawesome/fontawesome-svg-core"
 
 export type SpecificationKeyDetailsType = {
-   icon: SpecificationIconsType
+   icon: IconName
    name: string
    unit: string
    key: keyof SpecificationsType
@@ -31,7 +18,7 @@ export type SpecificationsType = {
 }
 
 export type DetailsKeyType = {
-   icon: DetailsIconsType
+   icon: IconName
    name: string
    key: keyof IAssetsData
 }

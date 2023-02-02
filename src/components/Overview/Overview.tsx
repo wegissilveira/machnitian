@@ -2,20 +2,21 @@ import { useState, useEffect } from "react"
 
 import classes from "./Overview.module.scss"
 
-import IAssetsData, { Icon } from "models/AssetsModel"
+import IAssetsData from "models/AssetsModel"
 import IUsersData from "models/UsersModel"
 import ICompanyData from "models/CompanyModel"
 import IUnitsData from "models/UnitsModel"
 
 import { Link } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { IconName } from "@fortawesome/fontawesome-svg-core"
 
 
 type Props = {
 	values: IUsersData[] | ICompanyData[] | IUnitsData[] | IAssetsData[]
 	title: string
 	link?: string
-   icon: Icon
+   icon: IconName
    color: string
 }
 

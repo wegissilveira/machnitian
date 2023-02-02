@@ -1,6 +1,6 @@
 import { useRef } from "react"
 
-import classes from "./SelectAgent.module.css"
+import classes from "./SelectAgent.module.scss"
 
 import * as AssetsActions from "store/ducks/assets/actions"
 import { ApplicationState } from "store"

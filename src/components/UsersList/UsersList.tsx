@@ -4,11 +4,11 @@ import * as AssetsActions from "store/ducks/assets/actions"
 import { ApplicationState } from "store"
 import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 import IUsersData from "models/UsersModel"
 import ItemsList, { ItemsListType } from "components/shared/ItemsList/ItemsList"
-import UserModal from "components/UsersList/UserModal/UserModal"
+// import UserModal from "components/UsersList/UserModal/UserModal"
 
 interface StateProps {
    users: Array<IUsersData>
@@ -24,7 +24,7 @@ type UsersValuesType = {
    id: number
    name: string
    unitId: number
-   editUser: JSX.Element
+   // editUser: JSX.Element
 }
 
 const UsersLIst = (props: Props) => {
@@ -32,19 +32,19 @@ const UsersLIst = (props: Props) => {
 
    const [usersTableValue, setUsersTableValue] = useState<UsersValuesType[]>([])
    const [ItemsListDetails, setItemsListDetails] = useState({} as ItemsListType<UsersValuesType>)
-   const [currentUser, setCurrentUser] = useState<number>(-1)
-   const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+   // const [currentUser, setCurrentUser] = useState<number>(-1)
+   // const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
 
-   const openModal = (userIndex: number): void => {      
-      if (isModalOpen) {
-         setIsModalOpen(false)
-         document.body.style.overflow = "scroll"
-      } else {
-         setIsModalOpen(true)
-         document.body.style.overflow = "hidden"
-      }
-      setCurrentUser(userIndex - 1)      
-   }
+   // const openModal = (userIndex: number): void => {      
+   //    if (isModalOpen) {
+   //       setIsModalOpen(false)
+   //       document.body.style.overflow = "scroll"
+   //    } else {
+   //       setIsModalOpen(true)
+   //       document.body.style.overflow = "hidden"
+   //    }
+   //    setCurrentUser(userIndex - 1)      
+   // }
 
    useEffect(() => {
       const usersTableValue = users.map((user) => {
@@ -52,7 +52,7 @@ const UsersLIst = (props: Props) => {
             id: user.id,
             name: user.name,
             unitId: user.unitId,
-            editUser: <FontAwesomeIcon onClick={() => openModal(user.id)} icon={['fas', 'edit']} color="#1e3c8f" />
+            // editUser: <FontAwesomeIcon onClick={() => openModal(user.id)} icon={['fas', 'edit']} color="#1e3c8f" />
          }
       })     
       setUsersTableValue(usersTableValue)
@@ -61,7 +61,8 @@ const UsersLIst = (props: Props) => {
    useEffect(() => {
       const ItemsListDetails = {
          title: "LISTA DE USUÁRIOS",
-         header: ["Id", "Nome", "Unidade", "Editar"],
+         // header: ["Id", "Nome", "Unidade", "Editar"],
+         header: ["Id", "Nome", "Unidade"],
          values: usersTableValue,
       }
 
@@ -75,13 +76,13 @@ const UsersLIst = (props: Props) => {
    return (
       <>
          <ItemsList itemsListDetails={ItemsListDetails} />
-         {isModalOpen && (
+         {/* {isModalOpen && (
             <UserModal
                user={users[currentUser]}
                open={isModalOpen}
                modalHandler={openModal}
             />
-         )}
+         )} */}
       </>
    )
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-import classes from "./UserModal.module.css"
+import classes from "./UserModal.module.scss"
 
 import * as AssetsActions from "store/ducks/assets/actions"
 import { ApplicationState } from "store"

@@ -26,7 +26,6 @@ type Data = {
 
 type DataPayload = {
     data: Data[]
-    // data: [IAssetsData[], IUsersData[], ICompanyData[], IUnitsData[]]
 }
 
 interface Action {
@@ -36,11 +35,6 @@ interface Action {
     error?: boolean;
 }
 
-// const isArrayOfIAssetsData = (arr: any[]): arr is IAssetsData[] => {
-//     // return arr.every(asset => asset instanceof IAssetsData);
-//     return arr.every(asset => typeof asset === 'string' );
-// }
-
 const reducer: Reducer<AssetsState> = (state = INITIAL_STATE, action: Action): AssetsState => {    
   switch (action.type) {
     case AssetsTypes.LOAD_REQUEST:
@@ -48,32 +42,21 @@ const reducer: Reducer<AssetsState> = (state = INITIAL_STATE, action: Action): A
             ...state, 
             loading: true 
         }
-    case AssetsTypes.LOAD_SUCCESS:
-        console.log('action ', action.payload?.data);      
-
+    case AssetsTypes.LOAD_SUCCESS:    
         return {
             ...state, 
             loading: false, 
-            error: false, 
-            // assets: action.data[0].data,
-            // users: action.data[1].data,
-            // units: action.data[2].data,
-            // company: action.data[3].data,
+            error: false,
             assets: action.payload?.data[0].data as IAssetsData[],
             users: action.payload?.data[1].data as IUsersData[],
             units: action.payload?.data[2].data as IUnitsData[],
-            company: action.payload?.data[3].data as ICompanyData[],
-            // assets: action.payload?.data[0] as IAssetsData[],
-            // users: action.payload?.data[1] as IUsersData[],
-            // units: action.payload?.data[2] as IUnitsData[],
-            // company: action.payload?.data[3] as ICompanyData[],
+            company: action.payload?.data[3].data as ICompanyData[]
         }
     case AssetsTypes.LOAD_FAILURE:
         return {
             ...state, 
             loading: false, 
             error: true 
-            // data: [],
         }
     default:
         return state

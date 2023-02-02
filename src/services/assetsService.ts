@@ -4,10 +4,6 @@ const getAll = () => {
     return httpAll
 }
 
-// const getAllTeste = () => {
-//     return httpAllTeste
-// }
-
 const getAllAssets = () => {
     return http.get('/assets')
 }
