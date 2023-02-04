@@ -1,5 +1,5 @@
-# ![Tractian](https://github.com/wegissilveira/tractian-test/blob/master/images-demo/overview.png)
-# Tractian
+![Overview](images-demo/overview-v2.png)
+# Machnitian
 <table>
 <tr>
 <td>
@@ -9,30 +9,31 @@
 </table>
 
 ## Demo
-Here is a working live demo :  https://wegis.com.br/tractian/#/tractian/
+Here is a working live demo :  https://wegis.com.br/machnitian
 
 
 ## Website
 
 ### Assets Page
 
-![](https://github.com/wegissilveira/tractian-test/blob/master/images-demo/assets.png)
+![Alt text](images-demo/assets-v2.png)
 
 ### Asset Details Page
-![](https://github.com/wegissilveira/tractian-test/blob/master/images-demo/asset-uni.png)
+![Alt text](images-demo/assets-uni-1-v2.png)
 
+![Alt text](images-demo/assets-uni-2-v2.png)
 
 ## Mobile support
 <em>The application</em> is compatible with devices of all sizes.
 
-![](https://github.com/wegissilveira/tractian-test/blob/master/images-demo/overview-mobile.png)
+![Alt text](images-demo/overview-mobile-v2.png)
 
 
 ### Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/wegissilveira/tractian/issues).
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/wegissilveira/machnitian/issues).
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/wegissilveira/tractian/issues).
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/wegissilveira/machnitian/issues).
 
 
 ## Built with 
