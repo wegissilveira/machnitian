@@ -1,14 +1,14 @@
-import { BrowserRouter, HashRouter, Route, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 
 import Layout from 'containers/Layout/Layout'
 import GeneralOverview from 'containers/GeneralOverview/GeneralOverview'
 import CompanyInfo from './components/CompanyInfo/CompanyInfo'
-import AssetsList from 'components/AssetsList/AssetsList'
-import AssetComponent from 'components/AssetComponent/AssetComponent'
-import UsersLIst from 'components/UsersList/UsersList'
-import UserModal from 'components/UsersList/UserModal/UserModal'
-import UnitsList from 'components/UnitsList/UnitsList'
+import AssetsList from 'pages/AssetsList/AssetsList'
+import AssetComponent from 'pages/AssetComponent/AssetComponent'
+import UsersLIst from 'pages/UsersList/UsersList'
+import UserModal from 'pages/UsersList/UserModal/UserModal'
+import UnitsList from 'pages/UnitsList/UnitsList'
 
 import store from 'store'
 
