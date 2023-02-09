@@ -8,7 +8,7 @@ import { bindActionCreators, Dispatch } from "redux"
 import { connect } from "react-redux"
 import moment from 'moment'
 
-import { RouteComponentProps } from "react-router"
+// import { RouteComponentProps } from "react-router"
 import Highcharts from "highcharts"
 import HighchartsReact from "highcharts-react-official"
 
@@ -33,7 +33,8 @@ interface DispatchProps {
 
 type TParams = { id: string }
 
-interface MyComponent extends RouteComponentProps<TParams> {}
+// interface MyComponent extends RouteComponentProps<TParams> {}
+interface MyComponent {}
 
 type Props = StateProps & DispatchProps & MyComponent
 
@@ -59,7 +60,7 @@ const setStatusArr = (color: string, status: string, icon: IconName): StatusInfo
    return [color, status, icon]
 }
 
-const AssetComponent = (props: Props) => {
+const AssetComponent = (props: any) => {
    const {
       assets,
       loadRequest,
@@ -123,7 +124,7 @@ const AssetComponent = (props: Props) => {
    }, [props])
 
    useEffect(() => {
-      assets.forEach((asset) => {
+      assets.forEach((asset: any) => {
          asset.id === Number(match.params.id) && setCurrentAsset(asset)
       })
    }, [assets, match.params.id])

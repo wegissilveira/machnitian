@@ -2,7 +2,7 @@ import { useState } from "react"
 
 import classes from "./NavigationMobile.module.scss"
 
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import LogoIcon from "components/ui/Logo"
 
@@ -24,7 +24,7 @@ const NavigationMobile = () => {
 
    return (
       <div className={classes["NavigationMobile-container"]}>
-         <Link to={`${process.env.PUBLIC_URL}/`}>
+         <Link href={`${process.env.PUBLIC_URL}/`}>
             <LogoIcon />
          </Link>
          <FontAwesomeIcon icon="bars" size="2x" onClick={mobileMenuHandler} />
@@ -36,10 +36,10 @@ const NavigationMobile = () => {
             <LogoIcon />
             <FontAwesomeIcon icon="times" size="2x" />
             <div className={classes["NavigationMobile-links"]}>
-               <Link to={`${process.env.PUBLIC_URL}/`}>Overview</Link>
-               <Link to={`${process.env.PUBLIC_URL}/assets-list`}>Ativos</Link>
-               <Link to={`${process.env.PUBLIC_URL}/users-list`}>Usuários</Link>
-               <Link to={`${process.env.PUBLIC_URL}/units-list`}>Unidades</Link>
+               <Link href={`${process.env.PUBLIC_URL}/`}>Overview</Link>
+               <Link href={`${process.env.PUBLIC_URL}/assets-list`}>Ativos</Link>
+               <Link href={`${process.env.PUBLIC_URL}/users-list`}>Usuários</Link>
+               <Link href={`${process.env.PUBLIC_URL}/units-list`}>Unidades</Link>
             </div>
          </div>
       </div>

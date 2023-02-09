@@ -7,7 +7,7 @@ import IUsersData from "models/UsersModel"
 import ICompanyData from "models/CompanyModel"
 import IUnitsData from "models/UnitsModel"
 
-import { Link } from "react-router-dom"
+import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { IconName } from "@fortawesome/fontawesome-svg-core"
 
@@ -44,7 +44,7 @@ const Overview = (props: Props) => {
    }, [values, title])
 
    return (
-      <Link to={`${process.env.PUBLIC_URL}/${link}`}>
+      <Link href={`${process.env.PUBLIC_URL}/${link}`}>
          <div className={classes["Overview-container"]}>
             <p>
                <span>{title}:</span> {header}
